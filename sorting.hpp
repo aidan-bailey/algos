@@ -4,7 +4,28 @@ namespace sort {
 
 // TODO SelectionSort
 
-// TODO InsertionSort
+/**
+ * Basic insertion sort.
+ *
+ * @param arr Array to be sorted.
+ * @param size Size of array.
+ * @returns Pointer to sorted array.
+ */
+template <typename T> T *insertion_sort(const T *arr, const int size) {
+  for (int i = 0; i < size; i++) {
+
+    // store currently selected element
+    int const temp = arr[i];
+    int index = i;
+
+    // compare to element on the left and switcheroo if required
+    while (index > 0 && temp < arr[index - 1])
+      *(arr + index) = arr[--index];
+
+    // move select element to new position
+    *(arr + index) = temp;
+  }
+}
 
 /**
  * Basic merge sort.
