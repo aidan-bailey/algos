@@ -9,9 +9,8 @@ namespace sort {
  *
  * @param arr Array to be sorted.
  * @param size Size of array.
- * @returns Pointer to sorted array.
  */
-template <typename T> T *insertion_sort(const T *arr, const int size) {
+template <typename T> void insertion_sort(T *arr, const int size) {
   for (int i = 0; i < size; i++) {
 
     // store currently selected element
@@ -19,13 +18,16 @@ template <typename T> T *insertion_sort(const T *arr, const int size) {
     int index = i;
 
     // compare to element on the left and switcheroo if required
-    while (index > 0 && temp < arr[index - 1])
-      *(arr + index) = arr[--index];
+    while (index > 0 && temp < arr[index - 1]) {
+      *(arr + index) = arr[index - 1];
+      index--;
+    }
 
     // move select element to new position
     *(arr + index) = temp;
   }
 }
+} // namespace sort
 
 /**
  * Basic merge sort.
@@ -74,7 +76,46 @@ template <typename T> T *merge_sort(T *arr, const int size) {
   return arrC;
 }
 
-// TODO QuickSort
+/**
+ * Basic quick sort.
+ *
+ * @param arr Array to be sorted.
+ * @param size Size of array.
+ */
+template <typename T> void quick_sort(T *arr, const int size) {
+
+  // basecase
+  if (size <= 1)
+    return;
+
+  // acquire pivot
+  int pivotIndex = 0;
+  T pivot = arr[pivotIndex];
+  int finalIndex = pivotIndex + 1;
+
+  // partition
+  for (int j = pivotIndex + 1; j < size; j++) {
+    if (arr[j] < pivot) {
+      // if probed element is less than the pivot, swap it into the pivots final
+      // index range
+      T temp = arr[j];
+      *(arr + j) = arr[finalIndex];
+      *(arr + finalIndex++) = temp;
+    }
+  }
+
+  // decrement final index to actual position
+  finalIndex--;
+
+  // place pivot in final destination
+  T temp = arr[finalIndex];
+  *(arr + finalIndex) = pivot;
+  *(arr + pivotIndex) = temp;
+
+  // recursively quicksort the resulting partitions
+  quick_sort<T>(arr, finalIndex);
+  quick_sort<T>(arr + finalIndex, size - (finalIndex + 1));
+}
 
 // TODO CountingSort
 
