@@ -27,7 +27,6 @@ template <typename T> void insertion_sort(T *arr, const int size) {
     *(arr + index) = temp;
   }
 }
-} // namespace sort
 
 /**
  * Basic merge sort.
