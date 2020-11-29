@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/aidanjbailey/Projects/Github/Personal/cpp-algos/cmake",
+  "command": "/usr/bin/c++  -I/home/aidanjbailey/Projects/Github/Personal/cpp-algos/test -I/home/aidanjbailey/Projects/Github/Personal/cpp-algos/include  -o CMakeFiles/test.dir/test/test.cpp.o -c /home/aidanjbailey/Projects/Github/Personal/cpp-algos/test/test.cpp",
+  "file": "/home/aidanjbailey/Projects/Github/Personal/cpp-algos/test/test.cpp"
+}
+]
