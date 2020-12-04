@@ -37,3 +37,10 @@
 
 # VSCode
 .vscode
+
+# Compile Commands
+compile_commands.json
+
+./cmake
+cmake/.
+cmake/*
