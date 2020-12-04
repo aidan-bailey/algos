@@ -41,6 +41,5 @@
 # Compile Commands
 compile_commands.json
 
-./cmake
-cmake/.
+# Cmake
 cmake/*
