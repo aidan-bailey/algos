@@ -10,7 +10,7 @@ namespace sort {
  * @param size Size of array.
  * @returns Pointer to sorted array.
  */
-template <typename T> T *merge_sort(T *arr, const int size) {
+template <typename T> T *merge_sort(T *arr, int &size) {
 
   // basecase
   if (size == 1)

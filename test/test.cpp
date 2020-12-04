@@ -4,6 +4,7 @@
 #include "searching/linear_search.hpp"
 #include "searching/ternary_search.hpp"
 #include "sorting/insertion_sort.hpp"
+#include "sorting/merge_sort.hpp"
 #include "sorting/quick_sort.hpp"
 #include <iostream>
 
@@ -48,6 +49,11 @@ SCENARIO("Sorting Algorithms") {
       int *temp = arr;
       sort::quick_sort<int>(temp, n);
       THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
+    }
+    WHEN("Merge Sort") {
+      int *temp = arr;
+      auto sorted = sort::merge_sort(temp, n);
+      THEN("Array is sorted") { REQUIRE(check_sorted_asc(sorted, n) == true); }
     }
   }
 }
