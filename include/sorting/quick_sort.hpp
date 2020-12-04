@@ -11,37 +11,29 @@ namespace sort {
  */
 template <typename T> void quick_sort(T *arr, int size) {
 
-  // basecase
   if (size <= 1)
     return;
 
-  // acquire pivot
-  int pivotIndex = 0;
+  int const pivotIndex = 0;
   T pivot = arr[pivotIndex];
-  int finalIndex = pivotIndex + 1;
+  int finalIndex = pivotIndex;
 
-  // partition
-  for (int j = pivotIndex + 1; j < size; j++) {
-    if (arr[j] < pivot) {
-      // if probed element is less than the pivot, swap it into the pivots final
-      // index range
-      T temp = arr[j];
-      *(arr + j) = arr[finalIndex];
-      *(arr + finalIndex++) = temp;
+  for (int i = finalIndex + 1; i < size; i++) {
+    if (pivot < arr[i]) {
+      continue;
     }
+    finalIndex++;
+    T temp = arr[i];
+    arr[i] = arr[finalIndex];
+    arr[finalIndex] = temp;
   }
 
-  // decrement final index to actual position
-  finalIndex--;
-
-  // place pivot in final destination
   T temp = arr[finalIndex];
   *(arr + finalIndex) = pivot;
   *(arr + pivotIndex) = temp;
 
-  // recursively quicksort the resulting partitions
   quick_sort<T>(arr, finalIndex);
-  quick_sort<T>(arr + finalIndex, size - (finalIndex + 1));
+  quick_sort<T>(arr + finalIndex + 1, size - (finalIndex + 1));
 }
 
 } // namespace sort
