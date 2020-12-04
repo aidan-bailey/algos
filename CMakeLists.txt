@@ -4,6 +4,6 @@ project( algos )
 
 set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 
-add_executable( test test/test.cpp )
+include_directories( test include )
 
-target_include_directories( test PUBLIC test include)
+add_executable( test test/test.cpp )
