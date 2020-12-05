@@ -52,8 +52,8 @@ SCENARIO("Sorting Algorithms") {
     }
     WHEN("Merge Sort") {
       int *temp = arr;
-      auto sorted = sort::merge_sort(temp, n);
-      THEN("Array is sorted") { REQUIRE(check_sorted_asc(sorted, n) == true); }
+      sort::merge_sort(temp, n);
+      THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
     }
   }
 }

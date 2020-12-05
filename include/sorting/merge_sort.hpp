@@ -1,6 +1,7 @@
 #ifndef __MERGE_SORT_H_
 #define __MERGE_SORT_H_
 
+#include <algorithm>
 namespace sort {
 
 /**
@@ -8,46 +9,37 @@ namespace sort {
  *
  * @param arr Array to be sorted.
  * @param size Size of array.
- * @returns Pointer to sorted array.
  */
-template <typename T> T *merge_sort(T *arr, int &size) {
+template <typename T> void merge_sort(T *arr, int &size) {
 
-  // basecase
   if (size == 1)
-    return arr;
+    return;
 
-  // acquire sizes
-  int sizeA = size / 2;
-  int sizeB = size - sizeA;
+  int l_size = size / 2;
+  int l_index = 0;
+  T *l_ptr = arr;
 
-  // initialize split array pointers
-  T *arrA = new T[sizeA];
-  T *arrB = new T[sizeB];
+  int r_size = size - l_size;
+  int r_index = l_size;
+  T *r_ptr = (arr + l_size);
 
-  // copy arrays
-  for (int i = 0, a = 0, b = 0; i < size; i++)
-    i < sizeA ? *(arrA + (a++)) = arr[i] : *(arrB + (b++)) = arr[i];
-
-  // merge sort both arrays
-  arrA = merge_sort(arrA, sizeA);
-  arrB = merge_sort(arrB, sizeB);
+  merge_sort(l_ptr, l_size);
+  merge_sort(r_ptr, r_size);
 
   // merging
   T *arrC = new T[size];
-  int i = 0, a = 0, b = 0;
-  while (a < sizeA && b < sizeB)
-    arrA[a] < arrB[b] ? *(arrC + i++) = arrA[a++] : *(arrC + i++) = arrB[b++];
-  while (a < sizeA)
-    *(arrC + i++) = arrA[a++];
-  while (b < sizeB)
-    *(arrC + i++) = arrB[b++];
+  int i = 0, l = 0, r = 0;
+  while (l < l_size && r < r_size)
+    l_ptr[l] < r_ptr[r] ? *(arrC + i++) = l_ptr[l++]
+                        : *(arrC + i++) = r_ptr[r++];
+  while (l < l_size)
+    *(arrC + i++) = l_ptr[l++];
+  while (r < r_size)
+    *(arrC + i++) = r_ptr[r++];
 
-  // memory cleanup
-  delete[] arrA;
-  delete[] arrB;
+  std::copy(arrC, arrC + size, arr);
 
-  // return sorted array
-  return arrC;
+  delete[] arrC;
 }
 
 } // namespace sort
