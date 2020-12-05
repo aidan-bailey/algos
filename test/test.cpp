@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+#include "misc/dynamic_fibonacci.hpp"
 #include "searching/binary_search.hpp"
 #include "searching/linear_search.hpp"
 #include "searching/ternary_search.hpp"
@@ -37,7 +38,7 @@ SCENARIO("Searching Algorithms") {
 }
 
 SCENARIO("Sorting Algorithms") {
-  GIVEN("An unsorted int array of size n ") {
+  GIVEN("An unsorted int array of size n") {
     int arr[]{5, 4, -8, 3, 2, 0, -5, 8, -9, -6, 9, -7, -2, -3, 7, -4, 6, -1, 1};
     int n = 19;
     WHEN("Insertion Sort") {
@@ -54,6 +55,19 @@ SCENARIO("Sorting Algorithms") {
       int *temp = arr;
       sort::merge_sort(temp, n);
       THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
+    }
+  }
+}
+
+SCENARIO("Misc") {
+  GIVEN("An integer n") {
+    int n = 5;
+    WHEN("Dynamic Fibonacci") {
+      int sol = 5;
+      THEN("N^th fibonacci value") {
+        int val = misc::dynamic_fibonacci(n);
+        REQUIRE(sol == val);
+      }
     }
   }
 }

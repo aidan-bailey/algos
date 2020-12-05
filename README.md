@@ -35,4 +35,4 @@ Run the *test.sh* from the main project directory.
 
 ### Misc
 
-- [ ] Dynamic Fibonacci
+- [x] Dynamic Fibonacci
