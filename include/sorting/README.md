@@ -1,4 +1,4 @@
-# Searching
+# Sorting
 
 ## Implemented
 
@@ -18,6 +18,6 @@
 
 | Name           | Type                 | Worst      | Average    | Best       | Space    |
 |----------------|----------------------|------------|------------|------------|----------|
-| Insertion Sort | Decrease and Conquer | O(n^2)     | O(n^2)     | n          | O(1)     |
+| Insertion Sort | Decrease and Conquer | O(n^2)     | O(n^2)     | O(n)       | O(1)     |
 | Merge Sort     | Divide and Conquer   | O(n log n) | O(n log n) | O(n log n) | O(n)     |
 | Quick Sort     | Divide and Conquer   | O(n^2)     | O(n log n) | O(n log n) | O(log n) |
