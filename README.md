@@ -32,6 +32,7 @@ Run the *test.sh* from the main project directory.
 - [x] Linear Search
 - [x] Binary Search
 - [x] Ternary Search
+- [x] Quickselect
 
 ### Misc
 

@@ -2,8 +2,8 @@
 #include "catch.hpp"
 #include "misc/dynamic_fibonacci.hpp"
 #include "searching/binary_search.hpp"
-#include "searching/kth_statistic_search.hpp"
 #include "searching/linear_search.hpp"
+#include "searching/quickselect.hpp"
 #include "searching/ternary_search.hpp"
 #include "sorting/insertion_sort.hpp"
 #include "sorting/merge_sort.hpp"
@@ -42,7 +42,7 @@ SCENARIO("Searching Algorithms") {
     int key = 10;
     int sol = 0;
     WHEN("Kth Order Statistic Search") {
-      int val = search::kth_statistic_search<int>(key, arr, n);
+      int val = search::quickselect<int>(key, arr, n);
       THEN("Return value of statistic") { REQUIRE(val == sol); }
     }
   }

@@ -10,7 +10,7 @@ namespace search {
  * @param arr Unsorted array.
  * @param size Size of unsorted array.
  * */
-template <typename T> int kth_statistic_search(int key, T *arr, int size) {
+template <typename T> int quickselect(int key, T *arr, int size) {
 
   if (size <= 1) {
     return arr[0];
@@ -38,9 +38,9 @@ template <typename T> int kth_statistic_search(int key, T *arr, int size) {
   *(arr + pivotIndex) = temp;
 
   return key < finalIndex + 1
-             ? kth_statistic_search<T>(key, arr, finalIndex)
-             : kth_statistic_search<T>(key - finalIndex, arr + finalIndex + 1,
-                                       size - (finalIndex + 1));
+             ? quickselect<T>(key, arr, finalIndex)
+             : quickselect<T>(key - finalIndex, arr + finalIndex + 1,
+                              size - (finalIndex + 1));
 }
 
 } // namespace search
