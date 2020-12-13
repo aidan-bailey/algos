@@ -18,22 +18,3 @@ Run `make` to generate the *test* executable.
 ### Using Script
 
 Run the *test.sh* from the main project directory.
-
-## Tested
-
-### Sorting
-
-- [x] Insertion Sort
-- [x] Merge Sort
-- [x] Quick Sort
-
-### Searching
-
-- [x] Linear Search
-- [x] Binary Search
-- [x] Ternary Search
-- [x] Quickselect
-
-### Misc
-
-- [x] Dynamic Fibonacci
