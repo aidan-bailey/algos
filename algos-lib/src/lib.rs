@@ -1,2 +1,1 @@
-// Searching
-pub mod linear_search;
+pub mod search;
