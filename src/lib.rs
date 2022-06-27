@@ -30,7 +30,18 @@ mod search_tests {
 
     #[test]
     fn linear_search_f32_good() {
-        const ITEMS: [f32; 10] = [0.0, -2.5, 5.123, 3.10425, -10.213000, 50.22222333, -12.123123, 4.0425, 200.9952, -42.10042];
+        const ITEMS: [f32; 10] = [
+            0.0,
+            -2.5,
+            5.123,
+            3.10425,
+            -10.213000,
+            50.22222333,
+            -12.123123,
+            4.0425,
+            200.9952,
+            -42.10042,
+        ];
         const ITEM: f32 = 4.0425;
         let result = search::linear(&ITEM, ITEMS.iter());
         if let Some(index) = result {
@@ -42,7 +53,18 @@ mod search_tests {
 
     #[test]
     fn linear_search_f32_bad() {
-        const ITEMS: [f32; 10] = [0.0, -2.5, 5.123, 3.10425, -10.213000, 50.22222333, -12.123123, 4.0425, 200.9952, -42.10042];
+        const ITEMS: [f32; 10] = [
+            0.0,
+            -2.5,
+            5.123,
+            3.10425,
+            -10.213000,
+            50.22222333,
+            -12.123123,
+            4.0425,
+            200.9952,
+            -42.10042,
+        ];
         const ITEM: f32 = 42.42;
         let result = search::linear(&ITEM, ITEMS.iter());
         if let Some(_) = result {
@@ -99,5 +121,4 @@ mod search_tests {
             assert!(true)
         }
     }
-
 }
