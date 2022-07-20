@@ -1,8 +1,8 @@
-pub fn linear<'a, T: 'a + std::cmp::PartialEq, I: Iterator<Item = &'a T>>(
+pub fn linear<T: std::cmp::PartialEq>(
     item: &T,
-    items: I,
+    items: &Vec<T>,
 ) -> Option<usize> {
-    for (index, value) in items.enumerate() {
+    for (index, value) in items.iter().enumerate() {
         if item == value {
             return Some(index);
         }

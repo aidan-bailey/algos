@@ -6,9 +6,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_i32_good() {
-        const ITEMS: [i32; 10] = [0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        const ITEM: i32 = 4;
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
+        let item: i32 = 4;
+        let result = search::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 7)
         } else {
@@ -18,9 +18,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_i32_bad() {
-        const ITEMS: [i32; 10] = [0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        const ITEM: i32 = -1;
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
+        let item: i32 = -1;
+        let result = search::linear(&item, &items);
         if let Some(_) = result {
             assert!(false)
         } else {
@@ -30,7 +30,7 @@ mod search_tests {
 
     #[test]
     fn linear_search_f32_good() {
-        const ITEMS: [f32; 10] = [
+        let items: Vec<f32> = vec![
             0.0,
             -2.5,
             5.123,
@@ -42,8 +42,8 @@ mod search_tests {
             200.9952,
             -42.10042,
         ];
-        const ITEM: f32 = 4.0425;
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let item: f32 = 4.0425;
+        let result = search::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 7)
         } else {
@@ -53,7 +53,7 @@ mod search_tests {
 
     #[test]
     fn linear_search_f32_bad() {
-        const ITEMS: [f32; 10] = [
+        let items: Vec<f32> = vec![
             0.0,
             -2.5,
             5.123,
@@ -65,8 +65,8 @@ mod search_tests {
             200.9952,
             -42.10042,
         ];
-        const ITEM: f32 = 42.42;
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let item: f32 = 42.42;
+        let result = search::linear(&item, &items);
         if let Some(_) = result {
             assert!(false)
         } else {
@@ -76,9 +76,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_char_good() {
-        const ITEMS: [char; 10] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        const ITEM: char = 'h';
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'h';
+        let result = search::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 7)
         } else {
@@ -88,9 +88,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_char_bad() {
-        const ITEMS: [char; 10] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        const ITEM: char = 'k';
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'k';
+        let result = search::linear(&item, &items);
         if let Some(_) = result {
             assert!(false)
         } else {
@@ -100,9 +100,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_str_good() {
-        const ITEMS: [&str; 10] = ["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        const ITEM: &str = "hi";
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "hi";
+        let result = search::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 7)
         } else {
@@ -112,9 +112,9 @@ mod search_tests {
 
     #[test]
     fn linear_search_str_bad() {
-        const ITEMS: [&str; 10] = ["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        const ITEM: &str = "kl";
-        let result = search::linear(&ITEM, ITEMS.iter());
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "kl";
+        let result = search::linear(&item, &items);
         if let Some(_) = result {
             assert!(false)
         } else {
