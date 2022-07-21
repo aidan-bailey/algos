@@ -30,19 +30,15 @@ pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usiz
         let m1: usize = l + (r - l) / 3;
         let m2: usize = r - (r - l) / 3;
         if &items[m1] == item {
-            return Some(m1)
-        }
-        else if &items[m2] == item {
-            return Some(m2)
-        }
-        else if &items[m2] < item {
+            return Some(m1);
+        } else if &items[m2] == item {
+            return Some(m2);
+        } else if &items[m2] < item {
             l = m2 + 1;
-        }
-        else if &items[m1] < item {
+        } else if &items[m1] < item {
             l = m1 + 1;
             r = m2 - 1;
-        }
-        else {
+        } else {
             r = m1 - 1;
         }
     }
