@@ -12,7 +12,6 @@ pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize
     let mut r: usize = items.len() - 1;
     while l <= r {
         let m: usize = (l + r) / 2;
-        print!("{}", l+r);
         if &items[m] < item {
             l = m + 1;
         } else if &items[m] > item {
