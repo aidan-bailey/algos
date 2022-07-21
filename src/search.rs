@@ -26,7 +26,7 @@ pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize
 
 pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize> {
     let mut l: usize = 0;
-    let mut r: usize = items.len();
+    let mut r: usize = items.len() - 1;
     while l <= r {
         let m1: usize = l + (r - l) / 3;
         let m2: usize = r - (r - l) / 3;
