@@ -3,8 +3,6 @@ Some common algorithms implemented in Rust.
 
 ## Usage
 
-From the main project directory:
-
 **Build**
 ```sh
 cargo build
