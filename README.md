@@ -1,5 +1,5 @@
 # Rust Algos
-Some common algorithms implemented in Rust.
+A collection of common algorithms implemented in Rust.
 
 **Build**
 ```sh
