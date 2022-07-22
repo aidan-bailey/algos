@@ -22,6 +22,7 @@ cargo test
 - [x] Linear Search
 - [x] Binary Search
 - [x] Ternary Search
+- [x] K-ary Search
 
 **Sorting**
 

@@ -156,7 +156,18 @@ mod search_tests {
 
     #[test]
     fn binary_search_f32_good() {
-        let items: Vec<f32> = vec![-1240.51029314, -620.152300001, -50.09532, -12.13520, 0.11142, 5.05923, 34.11113113, 50.094290, 123.12451, 500.05393];
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
         let item: f32 = 50.094290;
         let result = search::binary(&item, &items);
         if let Some(index) = result {
@@ -168,7 +179,18 @@ mod search_tests {
 
     #[test]
     fn binary_search_f32_bad() {
-        let items: Vec<f32> = vec![-1240.51029314, -620.152300001, -50.09532, -12.13520, 0.11142, 5.05923, 34.11113113, 50.094290, 123.12451, 500.05393];
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
         let item: f32 = -1.4242;
         let result = search::binary(&item, &items);
         if let Some(_) = result {
@@ -256,7 +278,18 @@ mod search_tests {
 
     #[test]
     fn ternary_search_f32_good() {
-        let items: Vec<f32> = vec![-1240.51029314, -620.152300001, -50.09532, -12.13520, 0.11142, 5.05923, 34.11113113, 50.094290, 123.12451, 500.05393];
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
         let item: f32 = 50.094290;
         let result = search::ternary(&item, &items);
         if let Some(index) = result {
@@ -268,7 +301,18 @@ mod search_tests {
 
     #[test]
     fn ternary_search_f32_bad() {
-        let items: Vec<f32> = vec![-1240.51029314, -620.152300001, -50.09532, -12.13520, 0.11142, 5.05923, 34.11113113, 50.094290, 123.12451, 500.05393];
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
         let item: f32 = -1.4242;
         let result = search::ternary(&item, &items);
         if let Some(_) = result {
@@ -326,5 +370,361 @@ mod search_tests {
         }
     }
 
+    /////////////////
+    // KARY SEARCH //
+    /////////////////
 
+    #[test]
+    fn kary_1_search_i32_good() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = 50;
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_i32_bad() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = -1;
+        let result = search::kary(&item, &items, 1);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_f32_good() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = 50.094290;
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_f32_bad() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = -1.4242;
+        let result = search::kary(&item, &items, 1);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_char_good() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'h';
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_char_bad() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'k';
+        let result = search::kary(&item, &items, 1);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_str_good() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "hi";
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_str_bad() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "kl";
+        let result = search::kary(&item, &items, 1);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_i32_good() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = 50;
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_i32_bad() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = -1;
+        let result = search::kary(&item, &items, 2);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_f32_good() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = 50.094290;
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_f32_bad() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = -1.4242;
+        let result = search::kary(&item, &items, 2);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_char_good() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'h';
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_char_bad() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'k';
+        let result = search::kary(&item, &items, 2);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_str_good() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "hi";
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_str_bad() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "kl";
+        let result = search::kary(&item, &items, 2);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_i32_good() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = 50;
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_i32_bad() {
+        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
+        let item: i32 = -1;
+        let result = search::kary(&item, &items, 3);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_f32_good() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = 50.094290;
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_f32_bad() {
+        let items: Vec<f32> = vec![
+            -1240.51029314,
+            -620.152300001,
+            -50.09532,
+            -12.13520,
+            0.11142,
+            5.05923,
+            34.11113113,
+            50.094290,
+            123.12451,
+            500.05393,
+        ];
+        let item: f32 = -1.4242;
+        let result = search::kary(&item, &items, 3);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_char_good() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'h';
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_char_bad() {
+        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let item: char = 'k';
+        let result = search::kary(&item, &items, 3);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_str_good() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "hi";
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 7)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_str_bad() {
+        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
+        let item: &str = "kl";
+        let result = search::kary(&item, &items, 3);
+        if let Some(_) = result {
+            assert!(false)
+        } else {
+            assert!(true)
+        }
+    }
 }

@@ -44,3 +44,22 @@ pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usiz
     }
     return None;
 }
+
+pub fn kary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>, k: usize) -> Option<usize> {
+    let mut l: usize = 0;
+    let mut r: usize = items.len() - 1;
+    while l <= r {
+        for m in (1..k + 1).map(|m| l + m * (r - l) / k).rev().collect::<Vec<usize>>() {
+            if &items[m] == item {
+                return Some(m);
+            }
+            else if &items[m] < item {
+                l = m + 1;
+            }
+            else {
+                r = m - 1;
+            }
+        }
+    }
+    return None;
+}
