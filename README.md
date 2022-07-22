@@ -36,7 +36,7 @@ cargo test
 - [ ] Quick Sort
 - [ ] Shell Sort
 
-**Bubble (+ Variants)**
+**Bubble**
 - [ ] Bubble Sort
 - [ ] Comb Sort
 - [ ] Exchange Sort
