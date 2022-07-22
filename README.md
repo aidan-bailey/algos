@@ -17,17 +17,35 @@ cargo test
 
 ## Algorithm Checklist
 
-**Searching**
+### Searching
 
 - [x] Linear Search
 - [x] Binary Search
 - [x] Ternary Search
 - [x] K-ary Search
 
-**Sorting**
+### Sorting
 
-*WIP*
+**Simple**
+- [ ] Insertion Sort
+- [ ] Selection Sort
 
-**Dynamic**
+**Efficient**
+- [ ] Merge Sort
+- [ ] Heap Sort
+- [ ] Quick Sort
+- [ ] Shell Sort
+
+**Bubble (+ Variants)**
+- [ ] Bubble Sort
+- [ ] Comb Sort
+- [ ] Exchange Sort
+
+**Distribution**
+- [ ] Counting Sort
+- [ ] Bucket Sort
+- [ ] Radix Sort
+
+### Dynamic
 
 *WIP*
