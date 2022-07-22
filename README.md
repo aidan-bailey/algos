@@ -15,7 +15,7 @@ cargo build
 cargo test
 ```
 
-## Algorithm Checklist
+## Algorithms
 
 ### Searching
 
