@@ -1,8 +1,6 @@
 # Rust Algos
 Some common algorithms implemented in Rust.
 
-## Usage
-
 **Build**
 ```sh
 cargo build
