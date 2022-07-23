@@ -23,9 +23,7 @@ pub fn selection<T: std::cmp::PartialOrd + Copy>(items: &Vec<T>) -> Vec<T> {
                 min_index = index;
             }
         }
-        let tmp = sorted_items[insertion_index];
-        sorted_items[insertion_index] = sorted_items[min_index];
-        sorted_items[min_index] = tmp;
+        sorted_items.swap(insertion_index, min_index);
         insertion_index += 1;
     }
     return sorted_items;
