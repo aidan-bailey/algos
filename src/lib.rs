@@ -9,7 +9,7 @@ mod search_tests {
     ///////////////////
 
     #[test]
-    fn linear_search_i32_good() {
+    fn linear_search_i32_hit() {
         let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
         let item: i32 = 4;
         let result = search::linear(&item, &items);
@@ -21,7 +21,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_i32_bad() {
+    fn linear_search_i32_miss() {
         let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
         let item: i32 = -1;
         let result = search::linear(&item, &items);
@@ -33,7 +33,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_f32_good() {
+    fn linear_search_f32_hit() {
         let items: Vec<f32> = vec![
             0.0,
             -2.5,
@@ -56,7 +56,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_f32_bad() {
+    fn linear_search_f32_miss() {
         let items: Vec<f32> = vec![
             0.0,
             -2.5,
@@ -79,7 +79,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_char_good() {
+    fn linear_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::linear(&item, &items);
@@ -91,7 +91,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_char_bad() {
+    fn linear_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::linear(&item, &items);
@@ -103,7 +103,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_str_good() {
+    fn linear_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::linear(&item, &items);
@@ -115,7 +115,7 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_str_bad() {
+    fn linear_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::linear(&item, &items);
@@ -131,7 +131,7 @@ mod search_tests {
     ///////////////////
 
     #[test]
-    fn binary_search_i32_good() {
+    fn binary_search_i32_hit() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = 50;
         let result = search::binary(&item, &items);
@@ -143,7 +143,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_i32_bad() {
+    fn binary_search_i32_miss() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = -1;
         let result = search::binary(&item, &items);
@@ -155,7 +155,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_f32_good() {
+    fn binary_search_f32_hit() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -178,7 +178,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_f32_bad() {
+    fn binary_search_f32_miss() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -201,7 +201,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_char_good() {
+    fn binary_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::binary(&item, &items);
@@ -213,7 +213,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_char_bad() {
+    fn binary_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::binary(&item, &items);
@@ -225,7 +225,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_str_good() {
+    fn binary_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::binary(&item, &items);
@@ -237,7 +237,7 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_str_bad() {
+    fn binary_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::binary(&item, &items);
@@ -253,7 +253,7 @@ mod search_tests {
     ////////////////////
 
     #[test]
-    fn ternary_search_i32_good() {
+    fn ternary_search_i32_hit() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = 50;
         let result = search::ternary(&item, &items);
@@ -265,7 +265,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_i32_bad() {
+    fn ternary_search_i32_miss() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = -1;
         let result = search::ternary(&item, &items);
@@ -277,7 +277,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_f32_good() {
+    fn ternary_search_f32_hit() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -300,7 +300,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_f32_bad() {
+    fn ternary_search_f32_miss() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -323,7 +323,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_char_good() {
+    fn ternary_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::ternary(&item, &items);
@@ -335,7 +335,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_char_bad() {
+    fn ternary_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::ternary(&item, &items);
@@ -347,7 +347,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_str_good() {
+    fn ternary_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::ternary(&item, &items);
@@ -359,7 +359,7 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_str_bad() {
+    fn ternary_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::ternary(&item, &items);
@@ -375,7 +375,7 @@ mod search_tests {
     /////////////////
 
     #[test]
-    fn kary_1_search_i32_good() {
+    fn kary_1_search_i32_hit() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = 50;
         let result = search::kary(&item, &items, 1);
@@ -387,7 +387,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_i32_bad() {
+    fn kary_1_search_i32_miss() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = -1;
         let result = search::kary(&item, &items, 1);
@@ -399,7 +399,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_f32_good() {
+    fn kary_1_search_f32_hit() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -422,7 +422,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_f32_bad() {
+    fn kary_1_search_f32_miss() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -445,7 +445,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_char_good() {
+    fn kary_1_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::kary(&item, &items, 1);
@@ -457,7 +457,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_char_bad() {
+    fn kary_1_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::kary(&item, &items, 1);
@@ -469,7 +469,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_str_good() {
+    fn kary_1_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::kary(&item, &items, 1);
@@ -481,7 +481,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_str_bad() {
+    fn kary_1_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::kary(&item, &items, 1);
@@ -493,7 +493,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_i32_good() {
+    fn kary_2_search_i32_hit() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = 50;
         let result = search::kary(&item, &items, 2);
@@ -505,7 +505,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_i32_bad() {
+    fn kary_2_search_i32_miss() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = -1;
         let result = search::kary(&item, &items, 2);
@@ -517,7 +517,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_f32_good() {
+    fn kary_2_search_f32_hit() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -540,7 +540,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_f32_bad() {
+    fn kary_2_search_f32_miss() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -563,7 +563,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_char_good() {
+    fn kary_2_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::kary(&item, &items, 2);
@@ -575,7 +575,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_char_bad() {
+    fn kary_2_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::kary(&item, &items, 2);
@@ -587,7 +587,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_str_good() {
+    fn kary_2_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::kary(&item, &items, 2);
@@ -599,7 +599,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_str_bad() {
+    fn kary_2_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::kary(&item, &items, 2);
@@ -611,7 +611,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_i32_good() {
+    fn kary_3_search_i32_hit() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = 50;
         let result = search::kary(&item, &items, 3);
@@ -623,7 +623,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_i32_bad() {
+    fn kary_3_search_i32_miss() {
         let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
         let item: i32 = -1;
         let result = search::kary(&item, &items, 3);
@@ -635,7 +635,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_f32_good() {
+    fn kary_3_search_f32_hit() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -658,7 +658,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_f32_bad() {
+    fn kary_3_search_f32_miss() {
         let items: Vec<f32> = vec![
             -1240.51029314,
             -620.152300001,
@@ -681,7 +681,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_char_good() {
+    fn kary_3_search_char_hit() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'h';
         let result = search::kary(&item, &items, 3);
@@ -693,7 +693,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_char_bad() {
+    fn kary_3_search_char_miss() {
         let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         let item: char = 'k';
         let result = search::kary(&item, &items, 3);
@@ -705,7 +705,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_str_good() {
+    fn kary_3_search_str_hit() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "hi";
         let result = search::kary(&item, &items, 3);
@@ -717,7 +717,7 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_str_bad() {
+    fn kary_3_search_str_miss() {
         let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
         let item: &str = "kl";
         let result = search::kary(&item, &items, 3);
