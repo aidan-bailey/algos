@@ -22,17 +22,11 @@ cargo test
 
 ### Sorting
 
-**Simple**
 - [x] Insertion Sort
 - [x] Selection Sort
-
-**Efficient**
 - [x] Merge Sort
-- [ ] Heap Sort
 - [ ] Quick Sort
 - [ ] Shell Sort
-
-**Bubble**
 - [ ] Bubble Sort
 - [ ] Comb Sort
 - [ ] Exchange Sort
