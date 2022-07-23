@@ -1,4 +1,5 @@
 pub mod search;
+pub mod sort;
 
 #[cfg(test)]
 mod search_tests {
@@ -726,5 +727,73 @@ mod search_tests {
         } else {
             assert!(true)
         }
+    }
+}
+
+#[cfg(test)]
+mod sort_tests {
+    use crate::sort;
+
+    ////////////////////
+    // INSERTION SORT //
+    ////////////////////
+
+    #[test]
+    fn insertion_sort_i32() {
+        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
+        let result = sort::insertion(&items);
+        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
+    }
+
+    #[test]
+    fn insertion_sort_f32() {
+        let items: Vec<f32> = vec![
+            0.0,
+            -2.5,
+            5.123,
+            3.10425,
+            -10.213000,
+            50.22222333,
+            -12.123123,
+            4.0425,
+            200.9952,
+            -42.10042,
+        ];
+        let result = sort::insertion(&items);
+        assert_eq!(
+            result,
+            vec![
+                -42.10042,
+                -12.123123,
+                -10.213000,
+                -2.5,
+                0.0,
+                3.10425,
+                4.0425,
+                5.123,
+                50.22222333,
+                200.9952
+            ]
+        )
+    }
+
+    #[test]
+    fn insertion_sort_char() {
+        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
+        let result = sort::insertion(&items);
+        assert_eq!(
+            result,
+            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+        )
+    }
+
+    #[test]
+    fn insertion_sort_str() {
+        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
+        let result = sort::insertion(&items);
+        assert_eq!(
+            result,
+            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
+        )
     }
 }
