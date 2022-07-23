@@ -19,7 +19,6 @@ A collection of common algorithms implemented in a variety of languages.
 | Insertion Sort | Decrease & Conquer | $O(n^2)$          | $O(n^2)$          | $O(n)$            | $O(1)$           |
 | Selection Sort | Decrease & Conquer | $n^2$             | $n^2$             | $n^2$             | $O(1)$           |
 | Merge Sort     | Divide & Conquer   | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(n)$           |
-| Heap Sort      |                    | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(1)$           |
 | Quick Sort     | Divide & Conquer   | $O(n^2)$          | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(\log_{2}{n})$ |
 | Shell Sort     |                    | $O(n^{3/2})$      | $O(n^{4/3})$      | $O(n\log_{2}{n})$ | $O(1)$           |
 | Bubble Sort    |                    | $O(n^2)$          | $O(n^2)$          | $O(n)$            | $O(1)$           |
