@@ -9,7 +9,7 @@ A collection of common algorithms implemented in a variety of languages.
 |----------------|--------------------|-------------------|--------------------|--------|--------|
 | Linear Search  | Brute-force        | $O(n)$            | $O(n)$             | $O(1)$ | $O(1)$ |
 | Binary Search  | Decrease & Conquer | $O(\log_{2}{n})$  | $O(\log_{2}{n})$   | $O(1)$ | $O(1)$ |
-| Ternary Search | Decrease & Conquer | $O(log_{3}{n})$   | $O(\log_{3}{n})$   | $O(1)$ | $O(1)$ |
+| Ternary Search | Decrease & Conquer | $O(\log_{3}{n})$   | $O(\log_{3}{n})$   | $O(1)$ | $O(1)$ |
 | K-ary Search   | Decrease & Conquer | $O(log_{k+1}{n})$ | $O(\log_{k+1}{n})$ | $O(1)$ | $O(1)$ |
 
 ### Sorting
