@@ -27,8 +27,8 @@ A collection of common algorithms implemented in a variety of languages.
 
 ## Languages
 
-- [ ] [https://github.com/aidanjbailey/algos/tree/master/algos-rs](Rust)
-- [ ] [https://github.com/aidanjbailey/algos/tree/master/cpp-algos](C++)
+- [ ] [Rust](https://github.com/aidanjbailey/algos/tree/master/algos-rs)
+- [ ] [C++](https://github.com/aidanjbailey/algos/tree/master/cpp-algos)
 - [ ] Haskell
 - [ ] Python
 - [ ] Julia
