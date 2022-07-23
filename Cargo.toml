@@ -1,0 +1,11 @@
+[package]
+name = "algos_lib"
+version = "0.1.0"
+authors = ["Aidan Bailey"]
+edition = "2021"
+description = "Some common algorithms"
+readme = "README.md"
+homepage = "https://github.com/aidanjbailey/algos-rs"
+repository = "https://github.com/aidanjbailey/algos-rs"
+license-file = "LICENSE.txt"
+keywords = ["algorithms"]
