@@ -24,7 +24,7 @@ cargo test
 
 **Simple**
 - [x] Insertion Sort
-- [ ] Selection Sort
+- [x] Selection Sort
 
 **Efficient**
 - [ ] Merge Sort
