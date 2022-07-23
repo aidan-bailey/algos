@@ -23,7 +23,7 @@ cargo test
 ### Sorting
 
 **Simple**
-- [ ] Insertion Sort
+- [x] Insertion Sort
 - [ ] Selection Sort
 
 **Efficient**
