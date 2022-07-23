@@ -11,8 +11,6 @@ cargo build
 cargo test
 ```
 
-## Algorithms
-
 ### Searching
 
 - [x] Linear Search
