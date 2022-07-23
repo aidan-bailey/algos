@@ -1,0 +1,6 @@
+[submodule "cpp-algos"]
+	path = cpp-algos
+	url = git@github.com:aidanjbailey/cpp-algos.git
+[submodule "algos-rs"]
+	path = algos-rs
+	url = git@github.com:aidanjbailey/algos-rs.git
