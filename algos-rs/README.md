@@ -36,6 +36,3 @@ cargo test
 - [ ] Bubble Sort
 - [ ] Comb Sort
 - [ ] Exchange Sort
-
-**Distribution**
-- [ ] Counting Sort
