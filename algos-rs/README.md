@@ -39,9 +39,3 @@ cargo test
 
 **Distribution**
 - [ ] Counting Sort
-- [ ] Bucket Sort
-- [ ] Radix Sort
-
-### Dynamic
-
-*WIP*
