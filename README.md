@@ -27,7 +27,7 @@ cargo test
 - [x] Selection Sort
 
 **Efficient**
-- [ ] Merge Sort
+- [x] Merge Sort
 - [ ] Heap Sort
 - [ ] Quick Sort
 - [ ] Shell Sort
