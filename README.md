@@ -27,12 +27,13 @@ A collection of common algorithms implemented in a variety of languages.
 
 ## Languages
 
-- [ ] [Rust](https://github.com/aidanjbailey/algos/tree/master/algos-rs)
 - [ ] [C++](https://github.com/aidanjbailey/algos/tree/master/cpp-algos)
+- [ ] Go
 - [ ] Haskell
-- [ ] Python
 - [ ] Julia
-- [ ] Scala
 - [ ] Lisp
 - [ ] Lua
-- [ ] Go
+- [ ] Python
+- [ ] [Rust](https://github.com/aidanjbailey/algos/tree/master/algos-rs)
+- [ ] Scala
+
