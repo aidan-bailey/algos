@@ -36,7 +36,7 @@ A collection of common algorithms implemented in a variety of languages.
 
 ### In-Progress
 
-- Rust
-- C++
+- [https://github.com/aidanjbailey/algos/tree/master/algos-rs](Rust)
+- [https://github.com/aidanjbailey/algos/tree/master/cpp-algos](C++)
 
 ### Completed
