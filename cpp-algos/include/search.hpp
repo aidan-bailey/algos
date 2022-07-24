@@ -1,70 +1,79 @@
 #ifndef SEARCH_HPP_
 #define SEARCH_HPP_
 
+#include <optional>
+#include <vector>
+
 namespace algos {
 
 namespace search {
 
 /**
- * Basic linear search.
+ * Linear search.
  *
- * @param key Value to be searched for.
- * @param arr Array pointer to be searched.
- * @param size Size of array.
- * @return Index of element, -1 if not found.
+ * @param item Item to be searched for.
+ * @param items Items be searched through.
+ * @return Index of item.
  */
-template <typename T> int linear(T &key, const T *arr, int &size) {
-  for (int i = 0; i < size; i++)
-    if (*(arr + i) == key)
-      return i;
-  return -1;
-}
-
-/**
- * Basic binary search.
- *
- * @param key Value to be searched for.
- * @param arr Array pointer to be searched.
- * @param size Size of array.
- * @return Index of element, -1 if not found.
- */
-template <typename T> int binary(const T key, const T *arr, const int size) {
-  int low(0), high(size - 1);
-  while (low <= high) {
-    int index = (low + high) / 2;
-    if (arr[index] == key)
+template <typename T>
+std::optional<size_t> linear(const T &item, const std::vector<T> &items) {
+  for (size_t index = 0; index < items.size(); index++)
+    if (items[index] == item)
       return index;
-    arr[index] < key ? low = index + 1 : high = index - 1;
-  }
-  return -1;
+  return {};
 }
 
 /**
- * Basic ternary search.
+ * Binary search.
  *
- * @param key Value to be searched for.
- * @param arr Array pointer to be searched.
- * @param size Size of array.
- * @return Index of element, -1 if not found.
+ * @param item Item to be searched for.
+ * @param items Items be searched through.
+ * @return Index of item.
  */
-template <typename T> int ternary(const T key, const T *arr, const int size) {
-  int left(0), right(size - 1);
-  while (left <= right) {
-    int mid1(left + (right - left) / 3), mid2(right - (right - left) / 3);
-    if (arr[mid1] == key)
-      return mid1;
-    if (arr[mid2] == key)
-      return mid2;
-    if (key < arr[mid1])
-      right = mid1 - 1;
-    else if (key > arr[mid2])
-      left = mid2 + 1;
-    else {
-      left = mid1 + 1;
-      right = mid2 - 1;
+template <typename T>
+std::optional<size_t> binary(const T &item, const std::vector<T> &items) {
+  size_t l(0);
+  size_t r(items.size() - 1);
+  while (l <= r) {
+    const size_t m = (l + r) / 2;
+    if (items[m] < item)
+      l = m + 1;
+    else if (items[m] > item)
+      r = m - 1;
+    else
+      return m;
+  }
+  return {};
+}
+
+/**
+ * Ternary search.
+ *
+ * @param item Item to be searched for.
+ * @param items Items be searched through.
+ * @return Index of item.
+ */
+template <typename T>
+std::optional<size_t> ternary(const T &item, const std::vector<T> &items) {
+  size_t l(0);
+  size_t r(items.size() - 1);
+  while (l <= r) {
+    const size_t m1(l + (r - l) / 3);
+    const size_t m2(r - (r - l) / 3);
+    if (items[m1] == item)
+      return m1;
+    else if (items[m2] == item)
+      return m2;
+    else if (items[m2] < item)
+      l = m2 + 1;
+    else if (items[m1] < item) {
+      l = m1 + 1;
+      r = m2 - 1;
+    } else {
+      r = m1 - 1;
     }
   }
-  return -1;
+  return {};
 }
 
 } // namespace search
