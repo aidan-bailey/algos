@@ -78,7 +78,7 @@ pub fn quick<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
                 from_left_index += 1;
             }
         }
-        if items[from_left_index] > items[pivot_index]{
+        if items[from_left_index] > items[pivot_index] {
             items.swap(pivot_index, from_left_index);
             pivot_index = from_left_index;
         }
@@ -88,6 +88,23 @@ pub fn quick<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
         let right_partition_len = partition.1 - left_partition_len - 1;
         let right_partition = (pivot_index + 1, right_partition_len);
         partitions.push(right_partition);
+    }
+    return items;
+}
+
+pub fn bubble<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
+    if items.len() < 2 {
+        return items;
+    }
+    let mut sorted = false;
+    while !sorted {
+        sorted = true;
+        for index in 0..items.len() - 1 {
+            if items[index] > items[index + 1] {
+                items.swap(index, index + 1);
+                sorted = false;
+            }
+        }
     }
     return items;
 }

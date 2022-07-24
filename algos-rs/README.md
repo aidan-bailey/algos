@@ -24,4 +24,4 @@ cargo test
 - [x] Selection Sort
 - [x] Merge Sort
 - [x] Quick Sort
-- [ ] Bubble Sort
+- [x] Bubble Sort

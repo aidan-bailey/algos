@@ -31,6 +31,6 @@ A collection of common algorithms implemented in a variety of languages.
 - [ ] Lisp
 - [ ] Lua
 - [ ] Python
-- [ ] Rust ([algos-rs](https://github.com/aidanjbailey/algos/tree/master/algos-rs))
+- [x] Rust ([algos-rs](https://github.com/aidanjbailey/algos/tree/master/algos-rs))
 - [ ] Scala
 
