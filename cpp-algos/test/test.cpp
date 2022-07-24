@@ -1,4 +1,5 @@
 #include <optional>
+#include <string>
 #include <vector>
 #define CATCH_CONFIG_MAIN
 #include "search.hpp"
@@ -16,21 +17,124 @@ bool check_sorted_asc(int *arr, int n) {
 }
 
 SCENARIO("Searching Algorithms") {
-  GIVEN("A sorted int array of size n") {
-    std::vector<int> arr{-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int key = 9;
-    size_t sol = 18;
-    WHEN("Linear Search") {
-      std::optional<size_t> index = search::linear(key, arr);
-      THEN("Return index of key") { REQUIRE(index.value() == sol); }
+  size_t index = 7;
+  GIVEN("Vector of Integers") {
+    std::vector<int> items{-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500};
+    int item_hit = 50;
+    int item_miss = 42;
+    WHEN("Linear Search (Hit)") {
+      std::optional<size_t> result = search::linear(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
     }
-    WHEN("Binary Search") {
-      std::optional<size_t> index = search::binary(key, arr);
-      THEN("Return index of key") { REQUIRE(index.value() == sol); }
+    WHEN("Linear Search (Miss)") {
+      std::optional<size_t> result = search::linear(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
     }
-    WHEN("Ternary Search") {
-      std::optional<size_t> index = search::ternary(key, arr);
-      THEN("Return index of key") { REQUIRE(index.value() == sol); }
+    WHEN("Binary Search (Hit)") {
+      std::optional<size_t> result = search::binary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Binary Search (Miss)") {
+      std::optional<size_t> result = search::binary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Ternary Search (Hit)") {
+      std::optional<size_t> result = search::ternary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Ternary Search (Miss)") {
+      std::optional<size_t> result = search::ternary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+  }
+  GIVEN("Vector of Floats") {
+    std::vector<float> items{
+        -1240.51029314, -620.152300001, -50.09532, -12.13520, 0.11142,
+        5.05923,        34.11113113,    50.094290, 123.12451, 500.05393};
+    float item_hit = 50.094290;
+    float item_miss = 42.42;
+    WHEN("Linear Search (Hit)") {
+      std::optional<size_t> result = search::linear(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Linear Search (Miss)") {
+      std::optional<size_t> result = search::linear(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Binary Search (Hit)") {
+      std::optional<size_t> result = search::binary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Binary Search (Miss)") {
+      std::optional<size_t> result = search::binary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Ternary Search (Hit)") {
+      std::optional<size_t> result = search::ternary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Ternary Search (Miss)") {
+      std::optional<size_t> result = search::ternary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+  }
+  GIVEN("Vector of Chars") {
+    std::vector<char> items{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+    char item_hit = 'h';
+    char item_miss = 'z';
+    WHEN("Linear Search (Hit)") {
+      std::optional<size_t> result = search::linear(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Linear Search (Miss)") {
+      std::optional<size_t> result = search::linear(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Binary Search (Hit)") {
+      std::optional<size_t> result = search::binary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Binary Search (Miss)") {
+      std::optional<size_t> result = search::binary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Ternary Search (Hit)") {
+      std::optional<size_t> result = search::ternary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Ternary Search (Miss)") {
+      std::optional<size_t> result = search::ternary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+  }
+  GIVEN("Vector of Strings") {
+    std::vector<std::string> items{"ab", "bc", "cd", "de", "ef",
+                                   "fg", "gh", "hi", "ij", "jk"};
+    std::string item_hit = "hi";
+    std::string item_miss = "zz";
+    WHEN("Linear Search (Hit)") {
+      std::optional<size_t> result = search::linear(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Linear Search (Miss)") {
+      std::optional<size_t> result = search::linear(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Binary Search (Hit)") {
+      std::optional<size_t> result = search::binary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Binary Search (Miss)") {
+      std::optional<size_t> result = search::binary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
+    }
+    WHEN("Ternary Search (Hit)") {
+      std::optional<size_t> result = search::ternary(item_hit, items);
+      THEN("Find the item") { REQUIRE(result.value() == index); }
+    }
+    WHEN("Ternary Search (Miss)") {
+      std::optional<size_t> result = search::ternary(item_miss, items);
+      THEN("Find the item") { REQUIRE(!result.has_value()); }
     }
   }
 }
