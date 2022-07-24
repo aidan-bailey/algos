@@ -1,20 +1,26 @@
-# Common C++ Algorithms
-Some common templated algorithms implemented in C++.
+# C++ Algos
+A collection of common algorithms implemented in C++.
 
-All algorithms can be found in their respective sub-directories within the *include* folder.
+**Build & Test**
+```sh
+mkdir build
+cd build
+cmake ..
+make -j
+./tests
+```
 
-## Build
+### Searching
 
-This project uses [catch2](https://github.com/catchorg/Catch2) as a testing framework.
+- [x] Linear Search
+- [x] Binary Search
+- [x] Ternary Search
+- [ ] K-ary Search
 
-Requires `cmake` to build the *test* executable.
+### Sorting
 
-### Manual Build
-
-Simply enter the *cmake* directory and call `cmake ..` to generate the *makefile*.
-
-Run `make` to generate the *test* executable.
-
-### Using Script
-
-Run the *test.sh* from the main project directory.
+- [ ] Insertion Sort
+- [ ] Selection Sort
+- [ ] Merge Sort
+- [ ] Quick Sort
+- [ ] Bubble Sort
