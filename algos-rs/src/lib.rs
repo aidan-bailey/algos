@@ -804,7 +804,7 @@ mod sort_tests {
     #[test]
     fn selection_sort_i32() {
         let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::selection(&items);
+        let result = sort::selection(items);
         assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
     }
 
@@ -822,7 +822,7 @@ mod sort_tests {
             200.9952,
             -42.10042,
         ];
-        let result = sort::selection(&items);
+        let result = sort::selection(items);
         assert_eq!(
             result,
             vec![
@@ -843,7 +843,7 @@ mod sort_tests {
     #[test]
     fn selection_sort_char() {
         let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::selection(&items);
+        let result = sort::selection(items);
         assert_eq!(
             result,
             vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
@@ -853,7 +853,7 @@ mod sort_tests {
     #[test]
     fn selection_sort_str() {
         let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::selection(&items);
+        let result = sort::selection(items);
         assert_eq!(
             result,
             vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
