@@ -1,4 +1,7 @@
 pub fn linear<T: std::cmp::PartialEq>(item: &T, items: &Vec<T>) -> Option<usize> {
+    if items.is_empty(){
+        return None;
+    }
     for (index, value) in items.iter().enumerate() {
         if item == value {
             return Some(index);
@@ -8,6 +11,9 @@ pub fn linear<T: std::cmp::PartialEq>(item: &T, items: &Vec<T>) -> Option<usize>
 }
 
 pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize> {
+    if items.is_empty(){
+        return None;
+    }
     let mut l: usize = 0;
     let mut r: usize = items.len() - 1;
     while l <= r {
@@ -24,6 +30,9 @@ pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize
 }
 
 pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize> {
+    if items.is_empty(){
+        return None;
+    }
     let mut l: usize = 0;
     let mut r: usize = items.len() - 1;
     while l <= r {
@@ -46,6 +55,9 @@ pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usiz
 }
 
 pub fn kary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>, k: usize) -> Option<usize> {
+    if items.is_empty(){
+        return None;
+    }
     let mut l: usize = 0;
     let mut r: usize = items.len() - 1;
     while l <= r {

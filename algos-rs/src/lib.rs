@@ -10,121 +10,55 @@ mod search_tests {
     ///////////////////
 
     #[test]
-    fn linear_search_i32_hit() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let item: i32 = 4;
+    fn linear_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::linear(&item, &items);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn linear_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
         let result = search::linear(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 0)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn linear_search_i32_miss() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let item: i32 = -1;
+    fn linear_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
         let result = search::linear(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     #[test]
-    fn linear_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn linear_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 4.0425;
+        let item: i64 = 0;
         let result = search::linear(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn linear_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn linear_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 42.42;
+        let item: i64 = 42;
         let result = search::linear(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn linear_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::linear(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn linear_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::linear(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn linear_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::linear(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn linear_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::linear(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     ///////////////////
@@ -132,121 +66,55 @@ mod search_tests {
     ///////////////////
 
     #[test]
-    fn binary_search_i32_hit() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = 50;
+    fn binary_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::binary(&item, &items);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn binary_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
         let result = search::binary(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 0)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn binary_search_i32_miss() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = -1;
+    fn binary_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
         let result = search::binary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     #[test]
-    fn binary_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn binary_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 50.094290;
+        let item: i64 = 0;
         let result = search::binary(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn binary_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn binary_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = -1.4242;
+        let item: i64 = 42;
         let result = search::binary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn binary_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::binary(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn binary_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::binary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn binary_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::binary(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn binary_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::binary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     ////////////////////
@@ -254,121 +122,55 @@ mod search_tests {
     ////////////////////
 
     #[test]
-    fn ternary_search_i32_hit() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = 50;
+    fn ternary_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::ternary(&item, &items);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn ternary_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
         let result = search::ternary(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 0)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn ternary_search_i32_miss() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = -1;
+    fn ternary_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
         let result = search::ternary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     #[test]
-    fn ternary_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn ternary_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 50.094290;
+        let item: i64 = 0;
         let result = search::ternary(&item, &items);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn ternary_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn ternary_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = -1.4242;
+        let item: i64 = 42;
         let result = search::ternary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn ternary_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::ternary(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn ternary_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::ternary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn ternary_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::ternary(&item, &items);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn ternary_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::ternary(&item, &items);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     /////////////////
@@ -376,356 +178,128 @@ mod search_tests {
     /////////////////
 
     #[test]
-    fn kary_1_search_i32_hit() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = 50;
+    fn kary_1_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::kary(&item, &items, 1);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn kary_1_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
         let result = search::kary(&item, &items, 1);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 0)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn kary_1_search_i32_miss() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = -1;
+    fn kary_1_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
         let result = search::kary(&item, &items, 1);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
+        assert!(result.is_none());
     }
 
     #[test]
-    fn kary_1_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn kary_1_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 50.094290;
+        let item: i64 = 0;
         let result = search::kary(&item, &items, 1);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn kary_1_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn kary_2_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::kary(&item, &items, 2);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn kary_2_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
+        let result = search::kary(&item, &items, 2);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn kary_2_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = -1.4242;
-        let result = search::kary(&item, &items, 1);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_1_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::kary(&item, &items, 1);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_1_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::kary(&item, &items, 1);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_1_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::kary(&item, &items, 1);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_1_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::kary(&item, &items, 1);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_i32_hit() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = 50;
+        let item: i64 = 0;
         let result = search::kary(&item, &items, 2);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
         }
     }
 
     #[test]
-    fn kary_2_search_i32_miss() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = -1;
-        let result = search::kary(&item, &items, 2);
-        if let Some(_) = result {
-            assert!(false)
+    fn kary_3_search_none() {
+        let items: Vec<i64> = vec![];
+        let item: i64 = 0;
+        let result = search::kary(&item, &items, 3);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn kary_3_search_one_hit() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 0;
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
         } else {
-            assert!(true)
+            assert!(false)
         }
     }
 
     #[test]
-    fn kary_2_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
+    fn kary_3_search_one_miss() {
+        let items: Vec<i64> = vec![0];
+        let item: i64 = 42;
+        let result = search::kary(&item, &items, 3);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn kary_3_search_many_hit() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
-        let item: f32 = 50.094290;
-        let result = search::kary(&item, &items, 2);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
-        ];
-        let item: f32 = -1.4242;
-        let result = search::kary(&item, &items, 2);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::kary(&item, &items, 2);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::kary(&item, &items, 2);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::kary(&item, &items, 2);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_2_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::kary(&item, &items, 2);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_i32_hit() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = 50;
+        let item: i64 = 0;
         let result = search::kary(&item, &items, 3);
         if let Some(index) = result {
-            assert_eq!(index, 7)
+            assert_eq!(index, 10)
         } else {
             assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_i32_miss() {
-        let items: Vec<i32> = vec![-1240, -620, -50, -12, 0, 5, 34, 50, 123, 500];
-        let item: i32 = -1;
-        let result = search::kary(&item, &items, 3);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_f32_hit() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
-        ];
-        let item: f32 = 50.094290;
-        let result = search::kary(&item, &items, 3);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_f32_miss() {
-        let items: Vec<f32> = vec![
-            -1240.51029314,
-            -620.152300001,
-            -50.09532,
-            -12.13520,
-            0.11142,
-            5.05923,
-            34.11113113,
-            50.094290,
-            123.12451,
-            500.05393,
-        ];
-        let item: f32 = -1.4242;
-        let result = search::kary(&item, &items, 3);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_char_hit() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'h';
-        let result = search::kary(&item, &items, 3);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_char_miss() {
-        let items: Vec<char> = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        let item: char = 'k';
-        let result = search::kary(&item, &items, 3);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_str_hit() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "hi";
-        let result = search::kary(&item, &items, 3);
-        if let Some(index) = result {
-            assert_eq!(index, 7)
-        } else {
-            assert!(false)
-        }
-    }
-
-    #[test]
-    fn kary_3_search_str_miss() {
-        let items: Vec<&str> = vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"];
-        let item: &str = "kl";
-        let result = search::kary(&item, &items, 3);
-        if let Some(_) = result {
-            assert!(false)
-        } else {
-            assert!(true)
         }
     }
 }
@@ -739,61 +313,14 @@ mod sort_tests {
     ////////////////////
 
     #[test]
-    fn insertion_sort_i32() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::insertion(&items);
-        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
-    }
-
-    #[test]
-    fn insertion_sort_f32() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn insertion_sort() {
+        let mut items: Vec<i64> = vec![
+            8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        let result = sort::insertion(&items);
+        sort::insertion(&mut items);
         assert_eq!(
-            result,
-            vec![
-                -42.10042,
-                -12.123123,
-                -10.213000,
-                -2.5,
-                0.0,
-                3.10425,
-                4.0425,
-                5.123,
-                50.22222333,
-                200.9952
-            ]
-        )
-    }
-
-    #[test]
-    fn insertion_sort_char() {
-        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::insertion(&items);
-        assert_eq!(
-            result,
-            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-        )
-    }
-
-    #[test]
-    fn insertion_sort_str() {
-        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::insertion(&items);
-        assert_eq!(
-            result,
-            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
+            items,
+            vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         )
     }
 
@@ -802,61 +329,14 @@ mod sort_tests {
     ////////////////////
 
     #[test]
-    fn selection_sort_i32() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::selection(items);
-        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
-    }
-
-    #[test]
-    fn selection_sort_f32() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn selection_sort() {
+        let mut items: Vec<i64> = vec![
+            8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        let result = sort::selection(items);
+        sort::selection(&mut items);
         assert_eq!(
-            result,
-            vec![
-                -42.10042,
-                -12.123123,
-                -10.213000,
-                -2.5,
-                0.0,
-                3.10425,
-                4.0425,
-                5.123,
-                50.22222333,
-                200.9952
-            ]
-        )
-    }
-
-    #[test]
-    fn selection_sort_char() {
-        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::selection(items);
-        assert_eq!(
-            result,
-            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-        )
-    }
-
-    #[test]
-    fn selection_sort_str() {
-        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::selection(items);
-        assert_eq!(
-            result,
-            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
+            items,
+            vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         )
     }
 
@@ -865,61 +345,14 @@ mod sort_tests {
     ////////////////
 
     #[test]
-    fn merge_sort_i32() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::merge(&items);
-        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
-    }
-
-    #[test]
-    fn merge_sort_f32() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn merge_sort() {
+        let items: Vec<i64> = vec![
+            8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        let result = sort::merge(&items);
+        let result = sort::merge(items);
         assert_eq!(
             result,
-            vec![
-                -42.10042,
-                -12.123123,
-                -10.213000,
-                -2.5,
-                0.0,
-                3.10425,
-                4.0425,
-                5.123,
-                50.22222333,
-                200.9952
-            ]
-        )
-    }
-
-    #[test]
-    fn merge_sort_char() {
-        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::merge(&items);
-        assert_eq!(
-            result,
-            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-        )
-    }
-
-    #[test]
-    fn merge_sort_str() {
-        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::merge(&items);
-        assert_eq!(
-            result,
-            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
+            vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         )
     }
 
@@ -928,61 +361,14 @@ mod sort_tests {
     ////////////////
 
     #[test]
-    fn quick_sort_i32() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::quick(items);
-        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
-    }
-
-    #[test]
-    fn quick_sort_f32() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
+    fn quick_sort() {
+        let mut items: Vec<i64> = vec![
+            8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        let result = sort::quick(items);
+        sort::quick(&mut items);
         assert_eq!(
-            result,
-            vec![
-                -42.10042,
-                -12.123123,
-                -10.213000,
-                -2.5,
-                0.0,
-                3.10425,
-                4.0425,
-                5.123,
-                50.22222333,
-                200.9952
-            ]
-        )
-    }
-
-    #[test]
-    fn quick_sort_char() {
-        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::quick(items);
-        assert_eq!(
-            result,
-            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-        )
-    }
-
-    #[test]
-    fn quick_sort_str() {
-        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::quick(items);
-        assert_eq!(
-            result,
-            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
+            items,
+            vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         )
     }
 
@@ -991,61 +377,9 @@ mod sort_tests {
     /////////////////
 
     #[test]
-    fn bubble_sort_i32() {
-        let items: Vec<i32> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
-        let result = sort::bubble(items);
-        assert_eq!(result, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
-    }
-
-    #[test]
-    fn bubble_sort_f32() {
-        let items: Vec<f32> = vec![
-            0.0,
-            -2.5,
-            5.123,
-            3.10425,
-            -10.213000,
-            50.22222333,
-            -12.123123,
-            4.0425,
-            200.9952,
-            -42.10042,
-        ];
-        let result = sort::bubble(items);
-        assert_eq!(
-            result,
-            vec![
-                -42.10042,
-                -12.123123,
-                -10.213000,
-                -2.5,
-                0.0,
-                3.10425,
-                4.0425,
-                5.123,
-                50.22222333,
-                200.9952
-            ]
-        )
-    }
-
-    #[test]
-    fn bubble_sort_char() {
-        let items: Vec<char> = vec!['e', 'i', 'g', 'f', 'h', 'd', 'j', 'a', 'b', 'c'];
-        let result = sort::bubble(items);
-        assert_eq!(
-            result,
-            vec!['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-        )
-    }
-
-    #[test]
-    fn bubble_sort_str() {
-        let items: Vec<&str> = vec!["de", "ef", "hi", "ab", "bc", "jk", "gh", "cd", "ij", "fg"];
-        let result = sort::bubble(items);
-        assert_eq!(
-            result,
-            vec!["ab", "bc", "cd", "de", "ef", "fg", "gh", "hi", "ij", "jk"]
-        )
+    fn bubble_sort() {
+        let mut items: Vec<i64> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
+        sort::bubble(&mut items);
+        assert_eq!(items, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
     }
 }

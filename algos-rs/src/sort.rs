@@ -1,21 +1,24 @@
-pub fn insertion<T: std::cmp::PartialOrd + Copy>(items: &Vec<T>) -> Vec<T> {
-    let mut sorted_items: Vec<T> = Vec::new();
-    for insertion_item in items.iter().copied() {
-        let mut insertion_index = sorted_items.len();
-        for (index, item) in sorted_items.iter().enumerate() {
-            if insertion_item < *item {
-                insertion_index = index;
+pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+    if items.len() < 2 {
+        return;
+    }
+    for current_index in 1..items.len() {
+        for insertion_index in (1..current_index+1).rev() {
+            if items[insertion_index] < items[insertion_index - 1] {
+                items.swap(insertion_index, insertion_index - 1);
+            }
+            else {
                 break;
             }
         }
-        sorted_items.insert(insertion_index, insertion_item);
     }
-    return sorted_items;
 }
 
-pub fn selection<T: std::cmp::PartialOrd + Copy>(mut items: Vec<T>) -> Vec<T> {
-    let mut insertion_index = 0;
-    while insertion_index < items.len() - 1 {
+pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+    if items.len() < 2 {
+        return;
+    }
+    for insertion_index in 0..items.len() - 1 {
         let mut min_index = insertion_index;
         for index in insertion_index + 1..items.len() {
             if items[index] < items[min_index] {
@@ -23,18 +26,16 @@ pub fn selection<T: std::cmp::PartialOrd + Copy>(mut items: Vec<T>) -> Vec<T> {
             }
         }
         items.swap(insertion_index, min_index);
-        insertion_index += 1;
     }
-    return items;
 }
 
-pub fn merge<T: std::cmp::PartialOrd + Copy>(items: &Vec<T>) -> Vec<T> {
+pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
-        return items.clone();
+        return items;
     }
     let m = items.len() / 2;
-    let sorted_items1: Vec<T> = merge(&items[..m].iter().copied().collect::<Vec<T>>());
-    let sorted_items2: Vec<T> = merge(&items[m..].iter().copied().collect::<Vec<T>>());
+    let sorted_items1: Vec<T> = merge(items[..m].iter().copied().collect::<Vec<T>>());
+    let sorted_items2: Vec<T> = merge(items[m..].iter().copied().collect::<Vec<T>>());
     let mut sorted_items: Vec<T> = Vec::new();
     let mut index1 = 0;
     let mut index2 = 0;
@@ -57,7 +58,10 @@ pub fn merge<T: std::cmp::PartialOrd + Copy>(items: &Vec<T>) -> Vec<T> {
     return sorted_items;
 }
 
-pub fn quick<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
+pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>){
+    if items.len() < 2 {
+        return;
+    }
     let mut partitions: Vec<(usize, usize)> = vec![(0, items.len())];
     while let Some(partition) = partitions.pop() {
         if partition.1 < 2 {
@@ -89,12 +93,11 @@ pub fn quick<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
         let right_partition = (pivot_index + 1, right_partition_len);
         partitions.push(right_partition);
     }
-    return items;
 }
 
-pub fn bubble<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
+pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>){
     if items.len() < 2 {
-        return items;
+        return;
     }
     let mut sorted = false;
     while !sorted {
@@ -106,5 +109,4 @@ pub fn bubble<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
             }
         }
     }
-    return items;
 }
