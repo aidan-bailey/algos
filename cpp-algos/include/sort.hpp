@@ -45,11 +45,9 @@ template <typename T> void merge(T *arr, int &size) {
     return;
 
   int l_size = size / 2;
-  int l_index = 0;
   T *l_ptr = arr;
 
   int r_size = size - l_size;
-  int r_index = l_size;
   T *r_ptr = (arr + l_size);
 
   merge(l_ptr, l_size);
