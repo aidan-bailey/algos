@@ -1,19 +1,20 @@
+/// sort the given vector using [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
 pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
     }
     for current_index in 1..items.len() {
-        for insertion_index in (1..current_index+1).rev() {
+        for insertion_index in (1..current_index + 1).rev() {
             if items[insertion_index] < items[insertion_index - 1] {
                 items.swap(insertion_index, insertion_index - 1);
-            }
-            else {
+            } else {
                 break;
             }
         }
     }
 }
 
+/// sort the given vector using [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
 pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
@@ -29,6 +30,7 @@ pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     }
 }
 
+/// sort the given vector using [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
 pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
         return items;
@@ -58,7 +60,8 @@ pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
     return sorted_items;
 }
 
-pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>){
+/// sort the given vector using [Quick Sort](https://en.wikipedia.org/wiki/Quick_sort)
+pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
     }
@@ -95,7 +98,8 @@ pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>){
     }
 }
 
-pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>){
+/// sort the given vector using [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort)
+pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
     }
