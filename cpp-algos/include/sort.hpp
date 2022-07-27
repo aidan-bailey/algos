@@ -3,26 +3,29 @@
 
 #include <algorithm>
 #include <vector>
-#include <iostream>
 
 namespace algos {
 
 namespace sort {
 
 /**
- * Insertion sort.
+ * Basic Insertion sort.
  *
- * @param items Items to be sorted.
+ * @param arr Array to be sorted.
+ * @param size Size of array.
  */
-template <typename T> void insertion(std::vector<T> &items) {
-  for (size_t i = 0; i < items.size(); i++) {
-    const T temp = items[i];
+template <typename T> void insertion(T *arr, size_t size) {
+  for (size_t i = 0; i < size; i++) {
+
+    const size_t temp = arr[i];
     size_t index = i;
-    while (index > 0 && temp < items[index - 1]) {
-      items[index] = items[index - 1];
+
+    while (index > 0 && temp < arr[index - 1]) {
+      *(arr + index) = arr[index - 1];
       index--;
     }
-    items[index] = temp;
+
+    *(arr + index) = temp;
   }
 }
 
