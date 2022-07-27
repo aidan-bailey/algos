@@ -378,8 +378,13 @@ mod sort_tests {
 
     #[test]
     fn bubble_sort() {
-        let mut items: Vec<i64> = vec![0, -2, 5, 3, -10, 50, -12, 4, 200, -42];
+        let mut items: Vec<i64> = vec![
+            8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
+        ];
         sort::bubble(&mut items);
-        assert_eq!(items, vec![-42, -12, -10, -2, 0, 3, 4, 5, 50, 200])
+        assert_eq!(
+            items,
+            vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        )
     }
 }
