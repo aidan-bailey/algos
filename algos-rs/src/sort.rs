@@ -1,4 +1,4 @@
-/// sort the given vector using the [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) algorithm
+/// Sort the given vector using the [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) algorithm.
 pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
@@ -14,7 +14,7 @@ pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     }
 }
 
-/// sort the given vector using the [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort) algorithm
+/// Sort the given vector using the [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort) algorithm.
 pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
@@ -30,7 +30,7 @@ pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     }
 }
 
-/// sort the given vector using the [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort) algorithm
+/// Sort the given vector using the [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort) algorithm.
 pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
         return items;
@@ -60,7 +60,7 @@ pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
     return sorted_items;
 }
 
-/// sort the given vector using the [Quick Sort](https://en.wikipedia.org/wiki/Quick_sort) algorithm
+/// Sort the given vector using the [Quick Sort](https://en.wikipedia.org/wiki/Quick_sort) algorithm.
 pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;
@@ -98,7 +98,7 @@ pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     }
 }
 
-/// sort the given vector using the [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort) algorithm
+/// Sort the given vector using the [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort) algorithm.
 pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
     if items.len() < 2 {
         return;

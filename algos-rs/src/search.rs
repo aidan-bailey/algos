@@ -1,4 +1,4 @@
-/// search the given vector for an element using the (Linear Search)[https://en.wikipedia.org/wiki/Linear_search] algorithm
+/// Search the given vector for an element using the (Linear Search)[https://en.wikipedia.org/wiki/Linear_search] algorithm.
 pub fn linear<T: std::cmp::PartialEq>(item: &T, items: &Vec<T>) -> Option<usize> {
     if items.is_empty(){
         return None;
@@ -11,7 +11,7 @@ pub fn linear<T: std::cmp::PartialEq>(item: &T, items: &Vec<T>) -> Option<usize>
     return None;
 }
 
-/// search the given vector for an element using the (Binary Search)[https://en.wikipedia.org/wiki/Binary_search] algorithm
+/// Search the given vector for an element using the (Binary Search)[https://en.wikipedia.org/wiki/Binary_search] algorithm.
 pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize> {
     if items.is_empty(){
         return None;
@@ -31,7 +31,7 @@ pub fn binary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize
     return None;
 }
 
-/// search the given vector for an element using the (Ternary Search)[https://en.wikipedia.org/wiki/Binary_search] algorithm
+/// Search the given vector for an element using the (Ternary Search)[https://en.wikipedia.org/wiki/Binary_search] algorithm.
 pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usize> {
     if items.is_empty(){
         return None;
@@ -57,7 +57,7 @@ pub fn ternary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>) -> Option<usiz
     return None;
 }
 
-/// search the given vector for an element using the Kary Search algorithm
+/// Search the given vector for an element using the Kary Search algorithm.
 pub fn kary<T: std::cmp::PartialOrd>(item: &T, items: &Vec<T>, k: usize) -> Option<usize> {
     if items.is_empty(){
         return None;
