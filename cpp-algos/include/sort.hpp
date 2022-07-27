@@ -2,32 +2,27 @@
 #define SORT_HPP_
 
 #include <algorithm>
+#include <vector>
+#include <iostream>
 
 namespace algos {
 
 namespace sort {
 
 /**
- * Basic insertion sort.
+ * Insertion sort.
  *
- * @param arr Array to be sorted.
- * @param size Size of array.
+ * @param items Items to be sorted.
  */
-template <typename T> void insertion(T *arr, int &size) {
-  for (int i = 0; i < size; i++) {
-
-    // store currently selected element
-    int const temp = arr[i];
-    int index = i;
-
-    // compare to element on the left and switcheroo if required
-    while (index > 0 && temp < arr[index - 1]) {
-      *(arr + index) = arr[index - 1];
+template <typename T> void insertion(std::vector<T> &items) {
+  for (size_t i = 0; i < items.size(); i++) {
+    const T temp = items[i];
+    size_t index = i;
+    while (index > 0 && temp < items[index - 1]) {
+      items[index] = items[index - 1];
       index--;
     }
-
-    // move select element to new position
-    *(arr + index) = temp;
+    items[index] = temp;
   }
 }
 
