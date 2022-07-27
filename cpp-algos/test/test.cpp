@@ -141,22 +141,21 @@ SCENARIO("Searching Algorithms") {
 
 SCENARIO("Sorting Algorithms") {
   GIVEN("An unsorted int array of size n") {
-    int arr[]{5, 4, -8, 3, 2, 0, -5, 8, -9, -6, 9, -7, -2, -3, 7, -4, 6, -1, 1};
-    int n = 19;
+    std::vector<int> items{8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9};
+    std::vector<int> truth{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     WHEN("Insertion Sort") {
-      int *temp = arr;
-      sort::insertion(temp, n);
-      THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
+      sort::insertion(items);
+      THEN("Array is sorted") { REQUIRE(items == truth); }
     }
-    WHEN("Quick Sort") {
-      int *temp = arr;
-      sort::quick(temp, n);
-      THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
-    }
-    WHEN("Merge Sort") {
-      int *temp = arr;
-      sort::merge(temp, n);
-      THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
-    }
+    // WHEN("Quick Sort") {
+    //   int *temp = arr;
+    //   sort::quick(temp, n);
+    //   THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
+    // }
+    // WHEN("Merge Sort") {
+    //   int *temp = arr;
+    //   sort::merge(temp, n);
+    //   THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
+    // }
   }
 }

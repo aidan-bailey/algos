@@ -2,6 +2,7 @@
 #define SORT_HPP_
 
 #include <algorithm>
+#include <utility>
 #include <vector>
 
 namespace algos {
@@ -9,23 +10,25 @@ namespace algos {
 namespace sort {
 
 /**
- * Basic Insertion sort.
+ * Sort the given vector using the Insertion Sort algorithm.
  *
- * @param arr Array to be sorted.
- * @param size Size of array.
+ * @param items Vector to be sorted.
  */
-template <typename T> void insertion(T *arr, size_t size) {
-  for (size_t i = 0; i < size; i++) {
+template <typename T> void insertion(std::vector<T> &items) {
 
-    const size_t temp = arr[i];
-    size_t index = i;
+  if (items.size() < 2)
+    return;
 
-    while (index > 0 && temp < arr[index - 1]) {
-      *(arr + index) = arr[index - 1];
-      index--;
+  for (size_t current_index = 1; current_index < items.size();
+       current_index++) {
+    for (size_t insertion_index = current_index; insertion_index > 0;
+         insertion_index--) {
+      if (items[insertion_index] < items[insertion_index - 1]) {
+        std::swap(items[insertion_index], items[insertion_index - 1]);
+      } else {
+        break;
+      }
     }
-
-    *(arr + index) = temp;
   }
 }
 
