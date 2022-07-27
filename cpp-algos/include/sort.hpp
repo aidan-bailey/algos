@@ -2,6 +2,7 @@
 #define SORT_HPP_
 
 #include <algorithm>
+#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -90,14 +91,10 @@ template <typename T> void quick(T *arr, int size) {
       continue;
     }
     finalIndex++;
-    T temp = arr[i];
-    arr[i] = arr[finalIndex];
-    arr[finalIndex] = temp;
+    std::swap(arr[i], arr[finalIndex]);
   }
 
-  T temp = arr[finalIndex];
-  *(arr + finalIndex) = pivot;
-  *(arr + pivotIndex) = temp;
+  std::swap(arr[finalIndex], arr[pivotIndex]);
 
   quick<T>(arr, finalIndex);
   quick<T>(arr + finalIndex + 1, size - (finalIndex + 1));
