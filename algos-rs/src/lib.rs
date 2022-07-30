@@ -38,7 +38,35 @@ mod search_tests {
     }
 
     #[test]
-    fn linear_search_many_hit() {
+    fn linear_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::linear(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn linear_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::linear(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn linear_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -94,7 +122,35 @@ mod search_tests {
     }
 
     #[test]
-    fn binary_search_many_hit() {
+    fn binary_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::binary(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn binary_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::binary(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn binary_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -150,7 +206,35 @@ mod search_tests {
     }
 
     #[test]
-    fn ternary_search_many_hit() {
+    fn ternary_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::ternary(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn ternary_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::ternary(&item, &items);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn ternary_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -206,7 +290,35 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_1_search_many_hit() {
+    fn kary_1_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::kary(&item, &items, 1);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_1_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -217,6 +329,16 @@ mod search_tests {
         } else {
             assert!(false)
         }
+    }
+
+    #[test]
+    fn kary_1_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 42;
+        let result = search::kary(&item, &items, 1);
+        assert!(result.is_none())
     }
 
     #[test]
@@ -248,7 +370,35 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_2_search_many_hit() {
+    fn kary_2_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::kary(&item, &items, 2);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_2_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -259,6 +409,16 @@ mod search_tests {
         } else {
             assert!(false)
         }
+    }
+
+    #[test]
+    fn kary_2_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 42;
+        let result = search::kary(&item, &items, 2);
+        assert!(result.is_none())
     }
 
     #[test]
@@ -290,7 +450,35 @@ mod search_tests {
     }
 
     #[test]
-    fn kary_3_search_many_hit() {
+    fn kary_3_search_many_first() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = -10;
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 0)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_many_last() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 10;
+        let result = search::kary(&item, &items, 3);
+        if let Some(index) = result {
+            assert_eq!(index, 20)
+        } else {
+            assert!(false)
+        }
+    }
+
+    #[test]
+    fn kary_3_search_many_middle() {
         let items: Vec<i64> = vec![
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
@@ -301,6 +489,16 @@ mod search_tests {
         } else {
             assert!(false)
         }
+    }
+
+    #[test]
+    fn kary_3_search_many_miss() {
+        let items: Vec<i64> = vec![
+            -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        ];
+        let item: i64 = 42;
+        let result = search::kary(&item, &items, 3);
+        assert!(result.is_none())
     }
 }
 
