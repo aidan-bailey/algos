@@ -1,6 +1,7 @@
 #ifndef SEARCH_HPP_
 #define SEARCH_HPP_
 
+#include <cstddef>
 #include <optional>
 #include <vector>
 
@@ -32,14 +33,19 @@ std::optional<size_t> linear(const T &item, const std::vector<T> &items) {
  */
 template <typename T>
 std::optional<size_t> binary(const T &item, const std::vector<T> &items) {
+  if (items.empty())
+    return {};
   size_t l(0);
   size_t r(items.size() - 1);
   while (l <= r) {
     const size_t m = (l + r) / 2;
     if (items[m] < item)
       l = m + 1;
-    else if (items[m] > item)
-      r = m - 1;
+    else if (item < items[m])
+      if (m == 0)
+        return {};
+      else
+        r = m - 1;
     else
       return m;
   }
@@ -55,6 +61,8 @@ std::optional<size_t> binary(const T &item, const std::vector<T> &items) {
  */
 template <typename T>
 std::optional<size_t> ternary(const T &item, const std::vector<T> &items) {
+  if (items.empty())
+    return {};
   size_t l(0);
   size_t r(items.size() - 1);
   while (l <= r) {
@@ -69,9 +77,10 @@ std::optional<size_t> ternary(const T &item, const std::vector<T> &items) {
     else if (items[m1] < item) {
       l = m1 + 1;
       r = m2 - 1;
-    } else {
+    } else if (m1 == 0)
+      return {};
+    else
       r = m1 - 1;
-    }
   }
   return {};
 }
