@@ -90,7 +90,7 @@ static bool check_sorted_asc(int *arr, int n) {
 
 #define TEST_ARY_SEARCH(name, k) TEST_BASIC_SEARCH(name, "[search::kary]", )
 
-std::vector<int> gen_vec(size_t size, bool sorted, bool unique) {
+std::vector<int> const gen_vec(size_t size, bool sorted, bool unique) {
   std::vector<int> result(size, 0);
   std::set<int> used;
   for (size_t i = 0; i < size; i++) {
