@@ -2,6 +2,8 @@
 #define SORT_HPP_
 
 #include <algorithm>
+#include <cstddef>
+#include <tuple>
 #include <type_traits>
 #include <utility>
 #include <vector>
@@ -70,32 +72,49 @@ template <typename T> void merge(T *arr, int &size) {
 }
 
 /**
- * Basic quick sort.
+ * Sort the given vector using the Quick Sort algorithm.
  *
- * @param arr Array to be sorted.
- * @param size Size of array.
+ * @param items Vector to be sorted.
  */
-template <typename T> void quick(T *arr, int size) {
-
-  if (size <= 1)
+template <typename T> void quick(std::vector<T> &items) {
+  if (items.size() < 2)
     return;
 
-  int const pivotIndex = 0;
-  T pivot = arr[pivotIndex];
-  int finalIndex = pivotIndex;
-
-  for (int i = finalIndex + 1; i < size; i++) {
-    if (pivot < arr[i]) {
+  std::vector<std::pair<size_t, size_t>> partitions{
+      std::pair<size_t, size_t>(0, items.size())};
+  while (!partitions.empty()) {
+    std::pair<size_t, size_t> partition = partitions.back();
+    partitions.pop_back();
+    if (partition.second < 2)
       continue;
+    size_t pivot_index = partition.first + partition.second - 1;
+    size_t from_right_index = pivot_index - 1;
+    size_t from_left_index = partition.first;
+    while (from_left_index < from_right_index) {
+      if (items[from_left_index] > items[pivot_index]) {
+        if (items[from_right_index] < items[pivot_index]) {
+          std::swap(items[pivot_index], items[from_right_index]);
+          std::swap(items[pivot_index], items[from_left_index]);
+          pivot_index = from_right_index;
+        }
+        from_right_index -= 1;
+      } else {
+        from_left_index += 1;
+      }
     }
-    finalIndex++;
-    std::swap(arr[i], arr[finalIndex]);
+    if (items[from_left_index] > items[pivot_index]) {
+      std::swap(items[pivot_index], items[from_left_index]);
+      pivot_index = from_left_index;
+    }
+    size_t left_partition_len = pivot_index - partition.first;
+    std::pair<size_t, size_t> left_partition =
+        std::pair<size_t, size_t>(partition.first, left_partition_len);
+    partitions.push_back(left_partition);
+    size_t right_partition_len = partition.second - left_partition_len - 1;
+    std::pair<size_t, size_t> right_partition =
+        std::pair<size_t, size_t>(pivot_index + 1, right_partition_len);
+    partitions.push_back(right_partition);
   }
-
-  std::swap(arr[finalIndex], arr[pivotIndex]);
-
-  quick<T>(arr, finalIndex);
-  quick<T>(arr + finalIndex + 1, size - (finalIndex + 1));
 }
 
 } // namespace sort
