@@ -118,4 +118,5 @@ static const std::vector<int> items(gen_vec(1000, false, false));
 TEST_BASIC_SEARCH("Linear Search", "[search::linear]", search::linear);
 TEST_BASIC_SEARCH("Binary Search", "[search::binary]", search::binary);
 TEST_BASIC_SEARCH("Ternary Search", "[search::ternary]", search::ternary);
-TEST_BASIC_SORT("Insertion Sort", "[search::insertion]", sort::insertion);
+TEST_BASIC_SORT("Insertion Sort", "[sort::insertion]", sort::insertion);
+TEST_BASIC_SORT("Quick Sort", "[sort::quick]", sort::quick);
