@@ -17,7 +17,7 @@ namespace search {
  * @return Index of item.
  */
 template <typename T>
-std::optional<size_t> linear(const T &item, const std::vector<T> &items) {
+std::optional<size_t> const linear(const T &item, const std::vector<T> &items) {
   for (size_t index = 0; index < items.size(); index++)
     if (items[index] == item)
       return index;
@@ -32,7 +32,7 @@ std::optional<size_t> linear(const T &item, const std::vector<T> &items) {
  * @return Index of item.
  */
 template <typename T>
-std::optional<size_t> binary(const T &item, const std::vector<T> &items) {
+std::optional<size_t> const binary(const T &item, const std::vector<T> &items) {
   if (items.empty())
     return {};
   size_t l(0);
@@ -60,7 +60,7 @@ std::optional<size_t> binary(const T &item, const std::vector<T> &items) {
  * @return Index of item.
  */
 template <typename T>
-std::optional<size_t> ternary(const T &item, const std::vector<T> &items) {
+std::optional<size_t> const ternary(const T &item, const std::vector<T> &items) {
   if (items.empty())
     return {};
   size_t l(0);
