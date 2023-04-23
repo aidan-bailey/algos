@@ -83,13 +83,13 @@ template <typename T> void quick(std::vector<T> &items) {
   std::vector<std::pair<size_t, size_t>> partitions{
       std::pair<size_t, size_t>(0, items.size())};
   while (!partitions.empty()) {
-    std::pair<size_t, size_t> partition = partitions.back();
+    std::pair<size_t, size_t> partition(partitions.back());
     partitions.pop_back();
     if (partition.second < 2)
       continue;
-    size_t pivot_index = partition.first + partition.second - 1;
-    size_t from_right_index = pivot_index - 1;
-    size_t from_left_index = partition.first;
+    size_t pivot_index(partition.first + partition.second - 1);
+    size_t from_right_index(pivot_index - 1);
+    size_t from_left_index(partition.first);
     while (from_left_index < from_right_index) {
       if (items[from_left_index] > items[pivot_index]) {
         if (items[from_right_index] < items[pivot_index]) {
@@ -106,13 +106,13 @@ template <typename T> void quick(std::vector<T> &items) {
       std::swap(items[pivot_index], items[from_left_index]);
       pivot_index = from_left_index;
     }
-    const size_t left_partition_len = pivot_index - partition.first;
-    const std::pair<size_t, size_t> left_partition =
-        std::pair<size_t, size_t>(partition.first, left_partition_len);
+    const size_t left_partition_len(pivot_index - partition.first);
+    const std::pair<size_t, size_t> left_partition(
+        std::pair<size_t, size_t>(partition.first, left_partition_len));
     partitions.push_back(left_partition);
-    const size_t right_partition_len = partition.second - left_partition_len - 1;
-    const std::pair<size_t, size_t> right_partition =
-        std::pair<size_t, size_t>(pivot_index + 1, right_partition_len);
+    const size_t right_partition_len(partition.second - left_partition_len - 1);
+    const std::pair<size_t, size_t> right_partition(
+        std::pair<size_t, size_t>(pivot_index + 1, right_partition_len));
     partitions.push_back(right_partition);
   }
 }
