@@ -1,12 +1,14 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdlib>
+#include <map>
 #include <optional>
 #include <string>
 #include <vector>
 #define CATCH_CONFIG_MAIN
 #include "search.hpp"
 #include "sort.hpp"
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <functional>
 #include <iostream>
@@ -21,13 +23,45 @@ static bool check_sorted_asc(int *arr, int n) {
   return true;
 }
 
+std::vector<int> const gen_vec(size_t size, bool sorted, bool unique) {
+  std::vector<int> result(size, 0);
+  std::set<int> used;
+  for (size_t i = 0; i < size; i++) {
+    size_t n = rand();
+    if (unique) {
+      while (used.count(n))
+        n = rand();
+      used.insert(n);
+    }
+    result[i] = n;
+  }
+  if (sorted)
+    std::sort(result.begin(), result.end());
+  return result;
+}
+
+std::vector<int> const get_vec(size_t size, bool sorted, bool unique) {
+  static std::map<const std::string, const std::vector<int>> cache;
+  const std::string key =
+      std::to_string(size) + std::to_string(sorted) + std::to_string(unique);
+  if (cache.count(key)) {
+    return cache[key];
+  }
+  const std::vector<int> result = gen_vec(size, sorted, unique);
+  cache.insert({key, result});
+  return result;
+}
+
+#define BASIC_TEST_SIZE 1000
+
 #define TEST_BASIC_SORT(name, funcname, func)                                  \
   TEST_CASE(name, funcname) {                                                  \
     GIVEN("An unsorted list") {                                                \
+      std::vector<int> items(get_vec(BASIC_TEST_SIZE, false, false));          \
       THEN("Return a sorted list") {                                           \
         std::vector<int> items_copy(items);                                    \
         func(items_copy);                                                      \
-        CHECK(check_sorted_asc(&items_copy[0], items_copy.size()));                                   \
+        CHECK(check_sorted_asc(&items_copy[0], items_copy.size()));            \
       }                                                                        \
     }                                                                          \
   }
@@ -35,6 +69,7 @@ static bool check_sorted_asc(int *arr, int n) {
 #define TEST_BASIC_SEARCH(name, funcname, func)                                \
   TEST_CASE(name, funcname) {                                                  \
     GIVEN("An even length integer list and an item") {                         \
+      const std::vector<int> esu_items(get_vec(BASIC_TEST_SIZE, true, true));  \
       {                                                                        \
         WHEN("It's the first item in the list")                                \
         THEN("Return 0")                                                       \
@@ -58,6 +93,8 @@ static bool check_sorted_asc(int *arr, int n) {
       }                                                                        \
     }                                                                          \
     GIVEN("An odd length integer list and an item") {                          \
+      static const std::vector<int> osu_items(                                 \
+          get_vec(BASIC_TEST_SIZE + 1, true, true));                           \
       {                                                                        \
         WHEN("It's the first item in the list")                                \
         THEN("Return 0")                                                       \
@@ -81,39 +118,13 @@ static bool check_sorted_asc(int *arr, int n) {
       }                                                                        \
     }                                                                          \
     GIVEN("An empty list and an item") {                                       \
+      static const std::vector<int> empty_items;                               \
       {                                                                        \
         THEN("Return no index")                                                \
         CHECK(!func(-1, empty_items).has_value());                             \
       }                                                                        \
     }                                                                          \
   }
-
-#define TEST_ARY_SEARCH(name, k) TEST_BASIC_SEARCH(name, "[search::kary]", )
-
-std::vector<int> const gen_vec(size_t size, bool sorted, bool unique) {
-  std::vector<int> result(size, 0);
-  std::set<int> used;
-  for (size_t i = 0; i < size; i++) {
-    size_t n = rand();
-    if (unique) {
-      while (used.find(n) != used.end())
-        n = rand();
-      used.insert(n);
-    }
-    result[i] = n;
-  }
-  if (sorted)
-    std::sort(result.begin(), result.end());
-  return result;
-}
-
-// EVEN SORTED UNIQUE
-static const std::vector<int> esu_items(gen_vec(1000, true, true));
-// ODD SORTED UNIQUE
-static const std::vector<int> osu_items(gen_vec(1001, true, true));
-// EMPTY
-static const std::vector<int> empty_items;
-static const std::vector<int> items(gen_vec(1000, false, false));
 
 TEST_BASIC_SEARCH("Linear Search", "[search::linear]", search::linear);
 TEST_BASIC_SEARCH("Binary Search", "[search::binary]", search::binary);
