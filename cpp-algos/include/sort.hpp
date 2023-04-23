@@ -106,12 +106,12 @@ template <typename T> void quick(std::vector<T> &items) {
       std::swap(items[pivot_index], items[from_left_index]);
       pivot_index = from_left_index;
     }
-    size_t left_partition_len = pivot_index - partition.first;
-    std::pair<size_t, size_t> left_partition =
+    const size_t left_partition_len = pivot_index - partition.first;
+    const std::pair<size_t, size_t> left_partition =
         std::pair<size_t, size_t>(partition.first, left_partition_len);
     partitions.push_back(left_partition);
-    size_t right_partition_len = partition.second - left_partition_len - 1;
-    std::pair<size_t, size_t> right_partition =
+    const size_t right_partition_len = partition.second - left_partition_len - 1;
+    const std::pair<size_t, size_t> right_partition =
         std::pair<size_t, size_t>(pivot_index + 1, right_partition_len);
     partitions.push_back(right_partition);
   }
