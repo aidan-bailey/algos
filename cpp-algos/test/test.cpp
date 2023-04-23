@@ -14,6 +14,24 @@
 
 using namespace algos;
 
+static bool check_sorted_asc(int *arr, int n) {
+  for (--n; n > 0; n--)
+    if (*(arr + n) < *(arr + n - 1))
+      return false;
+  return true;
+}
+
+#define TEST_BASIC_SORT(name, funcname, func)                                  \
+  TEST_CASE(name, funcname) {                                                  \
+    GIVEN("An unsorted list") {                                                \
+      THEN("Return a sorted list") {                                           \
+        std::vector<int> items_copy(items);                                    \
+        func(items_copy);                                                      \
+        CHECK(check_sorted_asc(&items_copy[0], items_copy.size()));                                   \
+      }                                                                        \
+    }                                                                          \
+  }
+
 #define TEST_BASIC_SEARCH(name, funcname, func)                                \
   TEST_CASE(name, funcname) {                                                  \
     GIVEN("An even length integer list and an item") {                         \
@@ -39,7 +57,7 @@ using namespace algos;
         CHECK(!func(-1, esu_items).has_value());                               \
       }                                                                        \
     }                                                                          \
-    GIVEN("An odd length integer list and an item") {                         \
+    GIVEN("An odd length integer list and an item") {                          \
       {                                                                        \
         WHEN("It's the first item in the list")                                \
         THEN("Return 0")                                                       \
@@ -72,13 +90,6 @@ using namespace algos;
 
 #define TEST_ARY_SEARCH(name, k) TEST_BASIC_SEARCH(name, "[search::kary]", )
 
-bool check_sorted_asc(int *arr, int n) {
-  for (--n; n > 0; n--)
-    if (*(arr + n) < *(arr + n - 1))
-      return false;
-  return true;
-}
-
 std::vector<int> gen_vec(size_t size, bool sorted, bool unique) {
   std::vector<int> result(size, 0);
   std::set<int> used;
@@ -97,37 +108,14 @@ std::vector<int> gen_vec(size_t size, bool sorted, bool unique) {
 }
 
 // EVEN SORTED UNIQUE
-static const std::vector<int> esu_items(gen_vec(1000000, true, false));
+static const std::vector<int> esu_items(gen_vec(1000, true, true));
 // ODD SORTED UNIQUE
-static const std::vector<int> osu_items(gen_vec(1000001, true, false));
+static const std::vector<int> osu_items(gen_vec(1001, true, true));
 // EMPTY
 static const std::vector<int> empty_items;
+static const std::vector<int> items(gen_vec(1000, false, false));
 
 TEST_BASIC_SEARCH("Linear Search", "[search::linear]", search::linear);
 TEST_BASIC_SEARCH("Binary Search", "[search::binary]", search::binary);
 TEST_BASIC_SEARCH("Ternary Search", "[search::ternary]", search::ternary);
-
-/*
-SCENARIO("Sorting Algorithms") {
-  GIVEN("An unsorted int array of size n") {
-    std::vector<int> items{8, 7, 0,   4, -7, -8, 3,  1,  -1, -5, -4,
-                           2, 6, -10, 5, 10, -2, -6, -9, -3, 9};
-    std::vector<int> truth{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0,
-                           1,   2,  3,  4,  5,  6,  7,  8,  9,  10};
-    WHEN("Insertion Sort") {
-      sort::insertion(items);
-      THEN("Array is sorted") { REQUIRE(items == truth); }
-    }
-    // WHEN("Quick Sort") {
-    //   int *temp = arr;
-    //   sort::quick(temp, n);
-    //   THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
-    // }
-    // WHEN("Merge Sort") {
-    //   int *temp = arr;
-    //   sort::merge(temp, n);
-    //   THEN("Array is sorted") { REQUIRE(check_sorted_asc(temp, n) == true); }
-    // }
-  }
-}
-*/
+TEST_BASIC_SORT("Insertion Sort", "[search::insertion]", sort::insertion);
