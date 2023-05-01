@@ -13,7 +13,7 @@
 
 namespace algos {
 
-namespace sort {
+namespace sorting {
 
 /**
  * Sort (inplace) the given vector using the Insertion Sort algorithm.

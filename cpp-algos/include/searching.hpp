@@ -9,7 +9,7 @@
 
 namespace algos {
 
-namespace search {
+namespace searching {
 
 /**
  * Linear search.

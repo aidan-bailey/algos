@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 #define CATCH_CONFIG_MAIN
-#include "search.hpp"
-#include "sort.hpp"
+#include "searching.hpp"
+#include "sorting.hpp"
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <functional>
@@ -126,17 +126,17 @@ std::vector<int> const get_vec(size_t size, bool sorted, bool unique) {
     }                                                                          \
   }
 
-TEST_BASIC_SEARCH("Linear Search", "[search::linear]", search::linear);
-TEST_BASIC_SEARCH("Binary Search", "[search::binary]", search::binary);
-TEST_BASIC_SEARCH("Ternary Search", "[search::ternary]", search::ternary);
-TEST_BASIC_SEARCH("Kary (1) Search", "[search::kary]", std::bind(search::kary<int>, 1, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SEARCH("Kary (2) Search", "[search::kary]", std::bind(search::kary<int>, 2, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SEARCH("Kary (3) Search", "[search::kary]", std::bind(search::kary<int>, 3, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SEARCH("Kary (5) Search", "[search::kary]", std::bind(search::kary<int>, 5, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SEARCH("Kary (8) Search", "[search::kary]", std::bind(search::kary<int>, 8, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SEARCH("Kary (13) Search", "[search::kary]", std::bind(search::kary<int>, 13, std::placeholders::_1, std::placeholders::_2));
-TEST_BASIC_SORT("Insertion Sort", "[sort::insertion]", sort::insertion);
-TEST_BASIC_SORT("Selection Sort", "[sort::selection]", sort::selection);
-TEST_BASIC_SORT("Merge Sort", "[sort::merge]", sort::merge);
-TEST_BASIC_SORT("Quick Sort", "[sort::quick]", sort::quick);
-TEST_BASIC_SORT("Bubble Sort", "[sort::bubble]", sort::bubble);
+TEST_BASIC_SEARCH("Linear Search", "[searching::linear]", searching::linear);
+TEST_BASIC_SEARCH("Binary Search", "[searching::binary]", searching::binary);
+TEST_BASIC_SEARCH("Ternary Search", "[searching::ternary]", searching::ternary);
+TEST_BASIC_SEARCH("Kary (1) Search", "[searching::kary]", std::bind(searching::kary<int>, 1, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (2) Search", "[searching::kary]", std::bind(searching::kary<int>, 2, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (3) Search", "[searching::kary]", std::bind(searching::kary<int>, 3, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (5) Search", "[searching::kary]", std::bind(searching::kary<int>, 5, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (8) Search", "[searching::kary]", std::bind(searching::kary<int>, 8, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (13) Search", "[searching::kary]", std::bind(searching::kary<int>, 13, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SORT("Insertion Sort", "[sorting::insertion]", sorting::insertion);
+TEST_BASIC_SORT("Selection Sort", "[sorting::selection]", sorting::selection);
+TEST_BASIC_SORT("Merge Sort", "[sorting::merge]", sorting::merge);
+TEST_BASIC_SORT("Quick Sort", "[sorting::quick]", sorting::quick);
+TEST_BASIC_SORT("Bubble Sort", "[sorting::bubble]", sorting::bubble);
