@@ -55,8 +55,6 @@ template <typename T> T *merge(const T *items, const size_t &size) {
   case 1:
     return new T[0]{items[0]};
   }
-  if (size < 2)
-    return new T[1]{items[0]};
   const size_t l_size = size / 2;
   const size_t r_size = size - l_size;
   T *l_sorted = merge(items, l_size);
