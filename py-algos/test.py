@@ -29,8 +29,6 @@ def search_template(func):
     # Not Exists
     assert(func(items=items, item=-1) == None)
 
-    assert(True)
-
 def test_linear():
     search_template(searching.linear)
 
