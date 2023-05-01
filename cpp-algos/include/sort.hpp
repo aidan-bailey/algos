@@ -3,6 +3,9 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <iostream>
+#include <iterator>
+#include <queue>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -39,39 +42,43 @@ template <typename T> std::vector<T> &insertion(std::vector<T> &items) {
 }
 
 /**
- * Basic merge sort.
+ * Sort the given array using the Merge Sort algorithm.
  *
- * @param arr Array to be sorted.
+ * @param arr Pointer to array to be sorted.
  * @param size Size of array.
+ * @returns Pointer to sorted array.
  */
-template <typename T> void merge(T *arr, int &size) {
-
-  if (size == 1)
-    return;
-
-  int l_size = size / 2;
-  T *l_ptr = arr;
-
-  int r_size = size - l_size;
-  T *r_ptr = (arr + l_size);
-
-  merge(l_ptr, l_size);
-  merge(r_ptr, r_size);
-
-  // merging
-  T *arrC = new T[size];
-  int i = 0, l = 0, r = 0;
+template <typename T> T *merge(const T *items, const size_t &size) {
+  if (size < 2)
+    return new T[1]{items[0]};
+  const size_t l_size = size / 2;
+  const size_t r_size = size - l_size;
+  T *l_sorted = merge(items, l_size);
+  T *r_sorted = merge(items + l_size, r_size);
+  T *sorted = new T[size];
+  size_t i = 0, l = 0, r = 0;
   while (l < l_size && r < r_size)
-    l_ptr[l] < r_ptr[r] ? *(arrC + i++) = l_ptr[l++]
-                        : *(arrC + i++) = r_ptr[r++];
+    l_sorted[l] < r_sorted[r] ? *(sorted + i++) = l_sorted[l++]
+                              : *(sorted + i++) = r_sorted[r++];
   while (l < l_size)
-    *(arrC + i++) = l_ptr[l++];
+    *(sorted + i++) = l_sorted[l++];
   while (r < r_size)
-    *(arrC + i++) = r_ptr[r++];
+    *(sorted + i++) = r_sorted[r++];
+  delete l_sorted;
+  delete r_sorted;
+  return sorted;
+}
 
-  std::copy(arrC, arrC + size, arr);
+/**
+ * Sort the given vector using the Merge Sort algorithm.
+ *
+ * @param items Vector to be sorted.
+ * @returns Sorted vector.
+ */
 
-  delete[] arrC;
+template <typename T> std::vector<T> merge(const std::vector<T> &items) {
+  T *result = merge(&items.front(), items.size());
+  return std::vector(result, result + items.size());
 }
 
 /**
