@@ -72,6 +72,27 @@ template <typename T> void merge(T *arr, int &size) {
 }
 
 /**
+ * Sort the given vector using the Selection Sort algorithm.
+ *
+ * @param items Vector to be sorted.
+ */
+template <typename T> void selection(std::vector<T> &items) {
+  if (items.size() < 2) {
+    return;
+  }
+  for (size_t insertion_index = 0; insertion_index < items.size();
+       insertion_index++) {
+    size_t min_index = insertion_index;
+    for (size_t index = insertion_index + 1; index < items.size(); index++) {
+      if (items[index] < items[min_index]) {
+        min_index = index;
+      }
+    }
+    std::swap(items[insertion_index], items[min_index]);
+  }
+}
+
+/**
  * Sort the given vector using the Quick Sort algorithm.
  *
  * @param items Vector to be sorted.

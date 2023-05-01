@@ -19,6 +19,6 @@ make -j
 ### Sorting
 
 - [x] Insertion Sort
-- [ ] Selection Sort
+- [x] Selection Sort
 - [x] Quick Sort
 - [ ] Bubble Sort
