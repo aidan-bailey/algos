@@ -1,9 +1,9 @@
-pub mod search;
-pub mod sort;
+pub mod searching;
+pub mod sorting;
 
 #[cfg(test)]
 mod search_tests {
-    use crate::search;
+    use crate::searching;
 
     ///////////////////
     // LINEAR SEARCH //
@@ -13,7 +13,7 @@ mod search_tests {
     fn linear_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         assert!(result.is_none());
     }
 
@@ -21,7 +21,7 @@ mod search_tests {
     fn linear_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -33,7 +33,7 @@ mod search_tests {
     fn linear_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         assert!(result.is_none());
     }
 
@@ -43,7 +43,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -57,7 +57,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -71,7 +71,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -85,7 +85,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::linear(&item, &items);
+        let result = searching::linear(&item, &items);
         assert!(result.is_none());
     }
 
@@ -97,7 +97,7 @@ mod search_tests {
     fn binary_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -105,7 +105,7 @@ mod search_tests {
     fn binary_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -117,7 +117,7 @@ mod search_tests {
     fn binary_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -127,7 +127,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -141,7 +141,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -155,7 +155,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -169,7 +169,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::binary(&item, &items);
+        let result = searching::binary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -181,7 +181,7 @@ mod search_tests {
     fn ternary_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -189,7 +189,7 @@ mod search_tests {
     fn ternary_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -201,7 +201,7 @@ mod search_tests {
     fn ternary_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -211,7 +211,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -225,7 +225,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -239,7 +239,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -253,7 +253,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::ternary(&item, &items);
+        let result = searching::ternary(&item, &items);
         assert!(result.is_none());
     }
 
@@ -265,7 +265,7 @@ mod search_tests {
     fn kary_1_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         assert!(result.is_none());
     }
 
@@ -273,7 +273,7 @@ mod search_tests {
     fn kary_1_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -285,7 +285,7 @@ mod search_tests {
     fn kary_1_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         assert!(result.is_none());
     }
 
@@ -295,7 +295,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -309,7 +309,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -323,7 +323,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -337,7 +337,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 1);
+        let result = searching::kary(&item, &items, 1);
         assert!(result.is_none())
     }
 
@@ -345,7 +345,7 @@ mod search_tests {
     fn kary_2_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         assert!(result.is_none());
     }
 
@@ -353,7 +353,7 @@ mod search_tests {
     fn kary_2_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -365,7 +365,7 @@ mod search_tests {
     fn kary_2_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         assert!(result.is_none());
     }
 
@@ -375,7 +375,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -389,7 +389,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -403,7 +403,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -417,7 +417,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 2);
+        let result = searching::kary(&item, &items, 2);
         assert!(result.is_none())
     }
 
@@ -425,7 +425,7 @@ mod search_tests {
     fn kary_3_search_none() {
         let items: Vec<i64> = vec![];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         assert!(result.is_none());
     }
 
@@ -433,7 +433,7 @@ mod search_tests {
     fn kary_3_search_one_hit() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -445,7 +445,7 @@ mod search_tests {
     fn kary_3_search_one_miss() {
         let items: Vec<i64> = vec![0];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         assert!(result.is_none());
     }
 
@@ -455,7 +455,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = -10;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         if let Some(index) = result {
             assert_eq!(index, 0)
         } else {
@@ -469,7 +469,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 10;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         if let Some(index) = result {
             assert_eq!(index, 20)
         } else {
@@ -483,7 +483,7 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 0;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         if let Some(index) = result {
             assert_eq!(index, 10)
         } else {
@@ -497,14 +497,14 @@ mod search_tests {
             -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         ];
         let item: i64 = 42;
-        let result = search::kary(&item, &items, 3);
+        let result = searching::kary(&item, &items, 3);
         assert!(result.is_none())
     }
 }
 
 #[cfg(test)]
 mod sort_tests {
-    use crate::sort;
+    use crate::sorting;
 
     ////////////////////
     // INSERTION SORT //
@@ -515,7 +515,7 @@ mod sort_tests {
         let mut items: Vec<i64> = vec![
             8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        sort::insertion(&mut items);
+        sorting::insertion(&mut items);
         assert_eq!(
             items,
             vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -531,7 +531,7 @@ mod sort_tests {
         let mut items: Vec<i64> = vec![
             8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        sort::selection(&mut items);
+        sorting::selection(&mut items);
         assert_eq!(
             items,
             vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -547,7 +547,7 @@ mod sort_tests {
         let items: Vec<i64> = vec![
             8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        let result = sort::merge(items);
+        let result = sorting::merge(items);
         assert_eq!(
             result,
             vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -563,7 +563,7 @@ mod sort_tests {
         let mut items: Vec<i64> = vec![
             8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        sort::quick(&mut items);
+        sorting::quick(&mut items);
         assert_eq!(
             items,
             vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -579,7 +579,7 @@ mod sort_tests {
         let mut items: Vec<i64> = vec![
             8, 7, 0, 4, -7, -8, 3, 1, -1, -5, -4, 2, 6, -10, 5, 10, -2, -6, -9, -3, 9,
         ];
-        sort::bubble(&mut items);
+        sorting::bubble(&mut items);
         assert_eq!(
             items,
             vec![-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
