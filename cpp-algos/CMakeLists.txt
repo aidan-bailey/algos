@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 project(ALGOS_LIB)
 
-option(DEV "Generate compiler commands and set logging to debug." OFF)
+option(DEV "Generate compiler commands and set logging to debug." ON)
 
 set(ALGOS_VERSION_MAJOR 0)
 set(ALGOS_VERSION_MINOR 1)
@@ -33,7 +33,7 @@ include(FetchContent)
 fetchcontent_declare(
   Catch2
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG v3.0.1
+  GIT_TAG v3.3.2
 )
 
 fetchcontent_makeavailable(Catch2)
