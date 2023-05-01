@@ -1,6 +1,11 @@
 # Python Algos
 A collection of common algorithms implemented in Python.
 
+**Test**
+``` sh
+pytest test.py
+```
+
 ### Searching
 
 - [ ] Linear Search
