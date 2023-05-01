@@ -88,6 +88,14 @@ std::optional<size_t> const ternary(const T &item,
   return {};
 }
 
+/**
+ * Kary search.
+ *
+ * @param k Arity.
+ * @param item Item to be searched for.
+ * @param items Items be searched through.
+ * @return Index of item.
+ */
 template <typename T>
 std::optional<size_t> const kary(const uint &k, const T &item,
                                  const std::vector<T> &items) {
