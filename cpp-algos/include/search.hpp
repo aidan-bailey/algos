@@ -2,7 +2,9 @@
 #define SEARCH_HPP_
 
 #include <cstddef>
+#include <iostream>
 #include <optional>
+#include <ostream>
 #include <vector>
 
 namespace algos {
@@ -60,7 +62,8 @@ std::optional<size_t> const binary(const T &item, const std::vector<T> &items) {
  * @return Index of item.
  */
 template <typename T>
-std::optional<size_t> const ternary(const T &item, const std::vector<T> &items) {
+std::optional<size_t> const ternary(const T &item,
+                                    const std::vector<T> &items) {
   if (items.empty())
     return {};
   size_t l(0);
@@ -81,6 +84,32 @@ std::optional<size_t> const ternary(const T &item, const std::vector<T> &items) 
       return {};
     else
       r = m1 - 1;
+  }
+  return {};
+}
+
+template <typename T>
+std::optional<size_t> const kary(const uint &k, const T &item,
+                                 const std::vector<T> &items) {
+  if (items.empty())
+    return {};
+  size_t l(0);
+  size_t r(items.size() - 1);
+  while (l <= r) {
+    const size_t const_l(l);
+    const size_t const_r(r);
+    for (size_t i = 1; i < k + 1; i++) {
+      const size_t m = const_l + i * (const_r - const_l) / (k + 1);
+      if (items[m] == item)
+        return m;
+      else if (item < items[m]) {
+        if (m == 0)
+          return {};
+        r = m - 1;
+        break;
+      } else
+        l = m + 1;
+    }
   }
   return {};
 }

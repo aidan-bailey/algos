@@ -129,6 +129,12 @@ std::vector<int> const get_vec(size_t size, bool sorted, bool unique) {
 TEST_BASIC_SEARCH("Linear Search", "[search::linear]", search::linear);
 TEST_BASIC_SEARCH("Binary Search", "[search::binary]", search::binary);
 TEST_BASIC_SEARCH("Ternary Search", "[search::ternary]", search::ternary);
+TEST_BASIC_SEARCH("Kary (1) Search", "[search::kary]", std::bind(search::kary<int>, 1, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (2) Search", "[search::kary]", std::bind(search::kary<int>, 2, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (3) Search", "[search::kary]", std::bind(search::kary<int>, 3, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (5) Search", "[search::kary]", std::bind(search::kary<int>, 5, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (8) Search", "[search::kary]", std::bind(search::kary<int>, 8, std::placeholders::_1, std::placeholders::_2));
+TEST_BASIC_SEARCH("Kary (13) Search", "[search::kary]", std::bind(search::kary<int>, 13, std::placeholders::_1, std::placeholders::_2));
 TEST_BASIC_SORT("Insertion Sort", "[sort::insertion]", sort::insertion);
 TEST_BASIC_SORT("Selection Sort", "[sort::selection]", sort::selection);
 TEST_BASIC_SORT("Merge Sort", "[sort::merge]", sort::merge);
