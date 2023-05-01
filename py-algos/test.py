@@ -31,7 +31,7 @@ def search_template(func):
 
 def sort_template(func):
 
-    items = get_list(1000, True)
+    items = get_list(1000, False)
     items_sorted = sorted(items.copy())
 
     assert(func(items.copy()) == items_sorted)
