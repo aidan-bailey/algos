@@ -49,6 +49,12 @@ template <typename T> std::vector<T> &insertion(std::vector<T> &items) {
  * @returns Pointer to sorted array.
  */
 template <typename T> T *merge(const T *items, const size_t &size) {
+  switch (size) {
+  case 0:
+    return new T[0]{};
+  case 1:
+    return new T[0]{items[0]};
+  }
   if (size < 2)
     return new T[1]{items[0]};
   const size_t l_size = size / 2;
