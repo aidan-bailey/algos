@@ -31,7 +31,7 @@ A collection of common algorithms implemented in a variety of languages.
 - [ ] Julia
 - [ ] Lisp
 - [ ] Lua
-- [ ] Python
+- [ ] Python ([py-algos](https://github.com/aidanjbailey/algos/tree/master/py-algos))
 - [ ] Pseudo
 - [x] Rust ([algos-rs](https://github.com/aidanjbailey/algos/tree/master/algos-rs))
 - [ ] Scala
