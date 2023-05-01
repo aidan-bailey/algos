@@ -138,6 +138,26 @@ template <typename T> void quick(std::vector<T> &items) {
   }
 }
 
+/**
+ * Sort the given vector using the Bubble Sort algorithm.
+ *
+ * @param items Vector to be sorted.
+ */
+template <typename T> void bubble(std::vector<T> &items) {
+  if (items.size() < 2)
+    return;
+  bool sorted = false;
+  while (!sorted) {
+    sorted = true;
+    for (size_t index = 0; index < items.size(); index++) {
+      if (items[index] > items[index + 1]) {
+        std::swap(items[index], items[index + 1]);
+        sorted = false;
+      }
+    }
+  }
+}
+
 } // namespace sort
 
 } // namespace algos

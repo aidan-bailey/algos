@@ -132,3 +132,4 @@ TEST_BASIC_SEARCH("Ternary Search", "[search::ternary]", search::ternary);
 TEST_BASIC_SORT("Insertion Sort", "[sort::insertion]", sort::insertion);
 TEST_BASIC_SORT("Selection Sort", "[sort::selection]", sort::selection);
 TEST_BASIC_SORT("Quick Sort", "[sort::quick]", sort::quick);
+TEST_BASIC_SORT("Bubble Sort", "[sort::bubble]", sort::bubble);

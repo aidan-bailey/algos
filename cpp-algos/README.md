@@ -21,4 +21,4 @@ make -j
 - [x] Insertion Sort
 - [x] Selection Sort
 - [x] Quick Sort
-- [ ] Bubble Sort
+- [x] Bubble Sort
