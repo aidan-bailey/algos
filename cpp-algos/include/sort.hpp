@@ -77,8 +77,10 @@ template <typename T> T *merge(const T *items, const size_t &size) {
  */
 
 template <typename T> std::vector<T> merge(const std::vector<T> &items) {
-  T *result = merge(&items.front(), items.size());
-  return std::vector(result, result + items.size());
+  T *sorted_ptr = merge(&items.front(), items.size());
+  std::vector result(sorted_ptr, sorted_ptr + items.size());
+  delete sorted_ptr;
+  return result;
 }
 
 /**
