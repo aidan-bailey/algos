@@ -5,11 +5,11 @@ if [ "$flag" = false ]; then
     exit 1
 fi 
 echo "Entering cmake dir..."
-cd cmake
+cd build
 echo "Running cmake command..."
 cmake .. > /dev/null
 echo "Building project with make..."
-make > /dev/null
+make -j > /dev/null
 echo "Running tests..."
-./test -s
+./tests -s
 cd ..
