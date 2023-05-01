@@ -58,12 +58,12 @@ template <typename T> T *merge(const T *items, const size_t &size) {
   T *sorted = new T[size];
   size_t i = 0, l = 0, r = 0;
   while (l < l_size && r < r_size)
-    l_sorted[l] < r_sorted[r] ? *(sorted + i++) = l_sorted[l++]
-                              : *(sorted + i++) = r_sorted[r++];
+    l_sorted[l] < r_sorted[r] ? sorted[i++] = l_sorted[l++]
+                              : sorted[i++] = r_sorted[r++];
   while (l < l_size)
-    *(sorted + i++) = l_sorted[l++];
+    sorted[i++] = l_sorted[l++];
   while (r < r_size)
-    *(sorted + i++) = r_sorted[r++];
+    sorted[i++] = r_sorted[r++];
   delete l_sorted;
   delete r_sorted;
   return sorted;
