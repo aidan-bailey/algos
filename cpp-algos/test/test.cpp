@@ -57,11 +57,11 @@ std::vector<int> const get_vec(size_t size, bool sorted, bool unique) {
 #define TEST_BASIC_SORT(name, funcname, func)                                  \
   TEST_CASE(name, funcname) {                                                  \
     GIVEN("An unsorted list") {                                                \
-      std::vector<int> items(get_vec(BASIC_TEST_SIZE, false, false));          \
+      const std::vector<int> items(get_vec(BASIC_TEST_SIZE, false, false));    \
       THEN("Return a sorted list") {                                           \
         std::vector<int> items_copy(items);                                    \
-        func(items_copy);                                                      \
-        CHECK(check_sorted_asc(&items_copy[0], items_copy.size()));            \
+        std::vector<int> sorted = func(items_copy);                            \
+        CHECK(check_sorted_asc(&sorted[0], items_copy.size()));                \
       }                                                                        \
     }                                                                          \
   }

@@ -13,14 +13,15 @@ namespace algos {
 namespace sort {
 
 /**
- * Sort the given vector using the Insertion Sort algorithm.
+ * Sort (inplace) the given vector using the Insertion Sort algorithm.
  *
  * @param items Vector to be sorted.
+ * @return Reference to sorted vector.
  */
-template <typename T> void insertion(std::vector<T> &items) {
+template <typename T> std::vector<T> &insertion(std::vector<T> &items) {
 
   if (items.size() < 2)
-    return;
+    return items;
 
   for (size_t current_index = 1; current_index < items.size();
        current_index++) {
@@ -33,6 +34,8 @@ template <typename T> void insertion(std::vector<T> &items) {
       }
     }
   }
+
+  return items;
 }
 
 /**
@@ -72,13 +75,14 @@ template <typename T> void merge(T *arr, int &size) {
 }
 
 /**
- * Sort the given vector using the Selection Sort algorithm.
+ * Sort (inplace) the given vector using the Selection Sort algorithm.
  *
  * @param items Vector to be sorted.
+ * @return Reference to sorted vector.
  */
-template <typename T> void selection(std::vector<T> &items) {
+template <typename T> std::vector<T> &selection(std::vector<T> &items) {
   if (items.size() < 2) {
-    return;
+    return items;
   }
   for (size_t insertion_index = 0; insertion_index < items.size();
        insertion_index++) {
@@ -90,16 +94,18 @@ template <typename T> void selection(std::vector<T> &items) {
     }
     std::swap(items[insertion_index], items[min_index]);
   }
+  return items;
 }
 
 /**
- * Sort the given vector using the Quick Sort algorithm.
+ * Sort (inplace) the given vector using the Quick Sort algorithm.
  *
  * @param items Vector to be sorted.
+ * @return Reference to sorted vector.
  */
-template <typename T> void quick(std::vector<T> &items) {
+template <typename T> std::vector<T> &quick(std::vector<T> &items) {
   if (items.size() < 2)
-    return;
+    return items;
 
   std::vector<std::pair<size_t, size_t>> partitions{
       std::pair<size_t, size_t>(0, items.size())};
@@ -136,16 +142,18 @@ template <typename T> void quick(std::vector<T> &items) {
         std::pair<size_t, size_t>(pivot_index + 1, right_partition_len));
     partitions.push_back(right_partition);
   }
+  return items;
 }
 
 /**
- * Sort the given vector using the Bubble Sort algorithm.
+ * Sort (inplace) the given vector using the Bubble Sort algorithm.
  *
  * @param items Vector to be sorted.
+ * @return Reference to sorted vector.
  */
-template <typename T> void bubble(std::vector<T> &items) {
+template <typename T> std::vector<T> &bubble(std::vector<T> &items) {
   if (items.size() < 2)
-    return;
+    return items;
   bool sorted = false;
   while (!sorted) {
     sorted = true;
@@ -156,6 +164,7 @@ template <typename T> void bubble(std::vector<T> &items) {
       }
     }
   }
+  return items;
 }
 
 } // namespace sort
