@@ -15,7 +15,6 @@ make -j
 - [x] Linear Search
 - [x] Binary Search
 - [x] Ternary Search
-- [ ] K-ary Search
 
 ### Sorting
 
