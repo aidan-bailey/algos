@@ -1,6 +1,6 @@
 import random
 from functools import partial
-from py_algos import searching
+from py_algos import searching, sorting
 
 def get_list(n: int, sort: bool):
     result = [ random.randint(0, 2**32) for _ in range(n) ]
@@ -28,6 +28,14 @@ def search_template(func):
 
     # Not Exists
     assert(func(items=items, item=-1) == None)
+
+def sort_template(func):
+
+    items = get_list(1000, True)
+    items_sorted = sorted(items.copy())
+
+    assert(func(items.copy()) == items_sorted)
+
 
 def test_linear():
     search_template(searching.linear)
@@ -61,3 +69,6 @@ def test_8ary():
 def test_13ary():
     func = partial(searching.kary, k=13)
     search_template(func)
+
+def test_insertion():
+    sort_template(sorting.insertion)
