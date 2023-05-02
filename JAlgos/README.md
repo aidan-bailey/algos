@@ -1,9 +1,14 @@
 # Java Algos
 A collection of common algorithms implemented in Java.
 
-**Build & Test**
+**Build**
 ``` sh
 gradle build
+```
+
+**Test**
+``` sh
+gradle test
 ```
 
 ### Searching
