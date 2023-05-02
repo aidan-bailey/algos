@@ -75,3 +75,6 @@ def test_insertion():
 
 def test_merge():
     sort_template(sorting.merge)
+
+def test_selection():
+    sort_template(sorting.selection)

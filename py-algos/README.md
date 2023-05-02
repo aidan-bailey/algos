@@ -16,7 +16,7 @@ pytest test.py
 ### Sorting
 
 - [x] Insertion Sort
-- [ ] Selection Sort
+- [x] Selection Sort
 - [x] Merge Sort
 - [ ] Quick Sort
 - [ ] Bubble Sort

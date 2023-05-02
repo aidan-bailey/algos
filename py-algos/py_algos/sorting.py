@@ -27,6 +27,31 @@ def insertion(items: List) -> List:
 
     return items
 
+def selection(items: List[Any]) -> List[Any]:
+    """Selection Sort (Inplace)
+
+    Parameters
+    ----------
+    items: List
+        List to sort
+
+    Returns
+    -------
+    Reference to sorted list.
+    """
+    if len(items) < 2:
+        return items
+
+    for insertion_index in range(len(items)):
+        min_index = insertion_index
+        for index in range(insertion_index + 1, len(items)):
+            if items[index] < items[min_index]:
+                min_index = index
+        temp = items[insertion_index]
+        items[insertion_index] = items[min_index]
+        items[min_index] = temp
+
+    return items
 
 def merge(items: List[Any]) -> List[Any]:
     """Merge Sort
