@@ -116,9 +116,6 @@ def quick(items: List[Any]) -> List[Any]:
                     swap(items, from_right_index, from_left_index)
                     swap(items, from_right_index, pivot)
                     pivot = from_right_index
-                else:
-                    swap(items, from_right_index, pivot)
-                    pivot = from_right_index
                 from_right_index -= 1
             else:
                 from_left_index += 1
