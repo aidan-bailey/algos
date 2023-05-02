@@ -90,7 +90,7 @@ def merge(items: List[Any]) -> List[Any]:
     return result
 
 def quick(items: List[Any]) -> List[Any]:
-    """Quicl Sort (Inplace)
+    """Quick Sort (Inplace)
 
     Parameters
     ----------
