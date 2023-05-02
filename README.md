@@ -36,4 +36,4 @@ A collection of common algorithms implemented in a variety of languages.
 - [x] Rust ([algos-rs](https://github.com/aidanjbailey/algos/tree/master/algos-rs))
 - [ ] Scala
 - [ ] Kotlin
-- [ ] Java
+- [ ] Java ([JAlgos](https://github.com/aidanjbailey/algos/tree/master/JAlgos))
