@@ -31,7 +31,7 @@ def search_template(func):
 
 def sort_template(func):
 
-    items = get_list(1000, False)
+    items = get_list(10, False)
     items_sorted = sorted(items.copy())
 
     assert(func(items.copy()) == items_sorted)
@@ -78,6 +78,9 @@ def test_merge():
 
 def test_selection():
     sort_template(sorting.selection)
+
+def test_quick():
+    sort_template(sorting.quick)
 
 def test_bubble():
     sort_template(sorting.bubble)

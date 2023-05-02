@@ -1,5 +1,9 @@
 from typing import Any, List
 
+def swap(items: List[Any], i1: int, i2: int):
+    temp = items[i1]
+    items[i1] = items[i2]
+    items[i2] = temp
 
 def insertion(items: List) -> List:
     """Insertion Sort (inplace)
@@ -19,9 +23,7 @@ def insertion(items: List) -> List:
     for current_index in range(1, len(items)):
         for insertion_index in range(current_index, 0, -1):
             if items[insertion_index] < items[insertion_index - 1]:
-                temp = items[insertion_index]
-                items[insertion_index] = items[insertion_index - 1]
-                items[insertion_index - 1] = temp
+                swap(items, insertion_index, insertion_index - 1)
             else:
                 break
 
@@ -48,9 +50,7 @@ def selection(items: List[Any]) -> List[Any]:
         for index in range(insertion_index + 1, len(items)):
             if items[index] < items[min_index]:
                 min_index = index
-        temp = items[insertion_index]
-        items[insertion_index] = items[min_index]
-        items[min_index] = temp
+        swap(items, insertion_index, min_index)
 
     return items
 
@@ -88,6 +88,49 @@ def merge(items: List[Any]) -> List[Any]:
         result.append(r_sorted.pop(0))
 
     return result
+
+def quick(items: List[Any]) -> List[Any]:
+    """Quicl Sort (Inplace)
+
+    Parameters
+    ----------
+    items: List
+       List to sort
+
+    Returns
+    -------
+    Reference to sorted list.
+    """
+    if len(items) < 2:
+        return items
+
+    def partition(items, first, last):
+        if (last - first + 1) < 2:
+            return
+        pivot = last
+        from_left_index = first
+        from_right_index = last
+        while from_left_index < from_right_index:
+            if items[from_left_index] > items[pivot]:
+                if items[from_right_index] < items[pivot]:
+                    swap(items, from_right_index, from_left_index)
+                    swap(items, from_right_index, pivot)
+                    pivot = from_right_index
+                else:
+                    swap(items, from_right_index, pivot)
+                    pivot = from_right_index
+                from_right_index -= 1
+            else:
+                from_left_index += 1
+        if items[from_left_index] > items[pivot]:
+            swap(items, pivot, from_left_index)
+            pivot = from_left_index
+
+        partition(items, first, pivot - 1)
+        partition(items, pivot + 1, last)
+
+    partition(items, 0, len(items) - 1)
+    return items
 
 
 def bubble(items: List[Any]) -> List[Any]:
