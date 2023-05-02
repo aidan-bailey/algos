@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 
 
 def insertion(items: List) -> List:
@@ -26,3 +26,38 @@ def insertion(items: List) -> List:
                 break
 
     return items
+
+
+def merge(items: List[Any]) -> List[Any]:
+    """Merge Sort
+
+    Parameters
+    ----------
+    items: List
+        List to sort
+
+    Returns
+    -------
+    Sorted list.
+    """
+    if len(items) < 2:
+        return items.copy()
+
+    m = len(items) // 2
+    l_sorted = merge(items[:m])
+    r_sorted = merge(items[m:])
+    result = []
+
+    while len(l_sorted) > 0 and len(r_sorted) > 0:
+        if l_sorted[0] < r_sorted[0]:
+            result.append(l_sorted.pop(0))
+        else:
+            result.append(r_sorted.pop(0))
+
+    while len(l_sorted) > 0:
+        result.append(l_sorted.pop(0))
+
+    while len(r_sorted) > 0:
+        result.append(r_sorted.pop(0))
+
+    return result

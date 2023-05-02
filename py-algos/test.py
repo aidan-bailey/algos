@@ -72,3 +72,6 @@ def test_13ary():
 
 def test_insertion():
     sort_template(sorting.insertion)
+
+def test_merge():
+    sort_template(sorting.merge)
