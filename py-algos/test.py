@@ -4,7 +4,7 @@ from py_algos import searching, sorting
 
 def get_list(n: int, sort: bool):
     result = [ random.randint(0, 2**32) for _ in range(n) ]
-    if (sort):
+    if sort:
         result.sort()
     return result
 
