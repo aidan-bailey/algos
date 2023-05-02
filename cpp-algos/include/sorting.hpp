@@ -170,7 +170,7 @@ template <typename T> std::vector<T> &bubble(std::vector<T> &items) {
   bool sorted = false;
   while (!sorted) {
     sorted = true;
-    for (size_t index = 0; index < items.size(); index++) {
+    for (size_t index = 0; index < items.size() - 1; index++) {
       if (items[index] > items[index + 1]) {
         std::swap(items[index], items[index + 1]);
         sorted = false;
