@@ -78,3 +78,6 @@ def test_merge():
 
 def test_selection():
     sort_template(sorting.selection)
+
+def test_bubble():
+    sort_template(sorting.bubble)

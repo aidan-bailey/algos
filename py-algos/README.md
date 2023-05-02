@@ -19,4 +19,4 @@ pytest test.py
 - [x] Selection Sort
 - [x] Merge Sort
 - [ ] Quick Sort
-- [ ] Bubble Sort
+- [x] Bubble Sort

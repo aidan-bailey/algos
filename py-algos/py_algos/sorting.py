@@ -27,6 +27,7 @@ def insertion(items: List) -> List:
 
     return items
 
+
 def selection(items: List[Any]) -> List[Any]:
     """Selection Sort (Inplace)
 
@@ -52,6 +53,7 @@ def selection(items: List[Any]) -> List[Any]:
         items[min_index] = temp
 
     return items
+
 
 def merge(items: List[Any]) -> List[Any]:
     """Merge Sort
@@ -86,3 +88,31 @@ def merge(items: List[Any]) -> List[Any]:
         result.append(r_sorted.pop(0))
 
     return result
+
+
+def bubble(items: List[Any]) -> List[Any]:
+    """Bubble Sort (Inplace)
+
+    Parameters
+    ----------
+    items: List
+       List to sort
+
+    Returns
+    -------
+    Reference to sorted list.
+    """
+    if len(items) < 2:
+        return items
+
+    issorted = False
+    while not issorted:
+        issorted = True
+        for i in range(len(items) - 1):
+            if items[i] > items[i + 1]:
+                temp = items[i]
+                items[i] = items[i + 1]
+                items[i + 1] = temp
+                issorted = False
+
+    return items
