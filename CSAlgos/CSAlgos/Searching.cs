@@ -44,4 +44,42 @@ public static class Searching
 
         return null;
     }
+
+    /**
+     * Ternary Search
+     *
+     * @param items a list of items to search
+     * @param item an item to search for
+     * @return the index of the item if found, null if not
+     */
+    public static int? Ternary<T>(List<T> items, T item) where T : IComparable<T>
+    {
+        if (items.Count == 0)
+            return null;
+
+        var l = 0;
+        var r = items.Count - 1;
+
+        while (l <= r) {
+            var m1 = l + (r - l) / 3;
+            var m2 = r - (r - l) / 3;
+            var m1Comparison = items[m1].CompareTo(item);
+            var m2Comparison = items[m2].CompareTo(item);
+            if (m1Comparison == 0)
+                return m1;
+            else if (m2Comparison == 0)
+                return m2;
+            else if (m2Comparison < 0)
+                l = m2 + 1;
+            else if (m1Comparison < 0){
+                l = m1 + 1;
+                r = m2 - 1;
+            }
+            else
+                r = m1 - 1;
+        }
+
+        return null;
+    }
+
 }

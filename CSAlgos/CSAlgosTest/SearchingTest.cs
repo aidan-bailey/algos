@@ -20,4 +20,7 @@ public class SearchingTests
 
     [TestMethod]
     public void BinaryTest() => SearchTemplate(Searching.Binary<int>);
+
+    [TestMethod]
+    public void TernaryTest() => SearchTemplate(Searching.Ternary<int>);
 }
