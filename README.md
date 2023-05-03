@@ -26,6 +26,7 @@ A collection of common algorithms implemented in a variety of languages.
 
 - [ ] C
 - [x] C++ ([cpp-algos](https://github.com/aidanjbailey/algos/tree/master/cpp-algos))
+- [ ] C# ([CSAlgos](https://github.com/aidanjbailey/algos/tree/master/CSAlgos))
 - [ ] Go
 - [ ] Haskell
 - [ ] Julia
