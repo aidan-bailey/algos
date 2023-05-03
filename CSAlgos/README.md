@@ -1,6 +1,11 @@
 # C# Algos
 A collection of common algorithms implemented in C#.
 
+**Test**
+```ssh
+dotnet test CSAlgosTest/CSAlgosTest.csproj
+```
+
 ### Searching
 
 - [ ] Linear Search
