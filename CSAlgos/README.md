@@ -11,7 +11,7 @@ dotnet test CSAlgosTest/CSAlgosTest.csproj
 - [x] Linear Search
 - [x] Binary Search
 - [x] Ternary Search
-- [ ] Kary Search
+- [x] Kary Search
 
 ### Sorting
 
