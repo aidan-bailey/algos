@@ -8,8 +8,8 @@ dotnet test CSAlgosTest/CSAlgosTest.csproj
 
 ### Searching
 
-- [ ] Linear Search
-- [ ] Binary Search
+- [x] Linear Search
+- [x] Binary Search
 - [ ] Ternary Search
 - [ ] Kary Search
 

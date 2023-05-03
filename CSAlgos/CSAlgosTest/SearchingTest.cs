@@ -5,16 +5,19 @@ using CSAlgos;
 public class SearchingTests
 {
 
-    private static List<int> items = TestUtils.GenerateList(1000, false);
+    private static List<int> items = TestUtils.GenerateList(1000, true);
 
     public void SearchTemplate(Func<List<int>, int, int?> func)
     {
-        Assert.AreEqual(func(items, items[0]), 0);
-        Assert.AreEqual(func(items, items[items.Count - 1]), items.Count - 1);
-        Assert.AreEqual(func(items, items[500]), 500);
-        Assert.AreEqual(func(items, -1), null);
+        Assert.AreEqual(0, func(items, items[0]));
+        Assert.AreEqual(items.Count - 1, func(items, items[items.Count - 1]));
+        Assert.AreEqual(500, func(items, items[500]));
+        Assert.AreEqual(null, func(items, -1));
     }
 
     [TestMethod]
     public void LinearTest() => SearchTemplate(Searching.Linear<int>);
+
+    [TestMethod]
+    public void BinaryTest() => SearchTemplate(Searching.Binary<int>);
 }
