@@ -121,7 +121,7 @@ def kary(k: int, items: List[Any], item: Any) -> Optional[Any]:
     while l <= r:
         const_l = l
         const_r = r
-        for i in range(k + 1):
+        for i in range(1, k + 1):
             m = const_l + i * (const_r - const_l) // (k + 1)
             if (items[m] == item):
                 return m
