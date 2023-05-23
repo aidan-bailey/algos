@@ -8,7 +8,7 @@ public static class Searching
      * @param item an item to search for
      * @return the index of the item if found, null if not
      */
-    public static int? Linear<T>(List<T> items, T item) where T : IEquatable<T>
+    public static int? Linear<T>(IList<T> items, T item) where T : IEquatable<T>
     {
         for (int i = 0; i < items.Count; i++)
             if (items[i].Equals(item))
@@ -23,7 +23,7 @@ public static class Searching
      * @param item an item to search for
      * @return the index of the item if found, null if not
      */
-    public static int? Binary<T>(List<T> items, T item) where T : IComparable<T>
+    public static int? Binary<T>(IList<T> items, T item) where T : IComparable<T>
     {
         if (items.Count == 0)
             return null;
@@ -53,7 +53,7 @@ public static class Searching
      * @param item an item to search for
      * @return the index of the item if found, null if not
      */
-    public static int? Ternary<T>(List<T> items, T item) where T : IComparable<T>
+    public static int? Ternary<T>(IList<T> items, T item) where T : IComparable<T>
     {
         if (items.Count == 0)
             return null;
@@ -93,7 +93,7 @@ public static class Searching
      * @param item an item to search for
      * @return the index of the item if found, null if not
      */
-    public static int? Kary<T>(int k, List<T> items, T item) where T : IComparable<T>
+    public static int? Kary<T>(int k, IList<T> items, T item) where T : IComparable<T>
     {
         if (items.Count == 0)
             return null;
