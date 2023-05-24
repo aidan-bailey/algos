@@ -17,7 +17,7 @@ A collection of common algorithms implemented in a variety of languages.
 | Name           | Method       | Worst             | Average           | Best              | Space            |
 |----------------|--------------|-------------------|-------------------|-------------------|------------------|
 | Insertion Sort | Inserting    | $O(n^2)$          | $O(n^2)$          | $O(n)$            | $O(1)$           |
-| Selection Sort | Selecting    | $n^2$             | $n^2$             | $n^2$             | $O(1)$           |
+| Selection Sort | Selecting    | $O(n^2)$             | $O(n^2)$             | $O(n^2)$             | $O(1)$           |
 | Merge Sort     | Merging      | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(n)$           |
 | Quick Sort     | Partitioning | $O(n^2)$          | $O(n\log_{2}{n})$ | $O(n\log_{2}{n})$ | $O(\log_{2}{n})$ |
 | Bubble Sort    | Exchanging   | $O(n^2)$          | $O(n^2)$          | $O(n)$            | $O(1)$           |
