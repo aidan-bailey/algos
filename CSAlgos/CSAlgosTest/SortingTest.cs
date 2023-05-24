@@ -20,4 +20,7 @@ public class SortingTests
 
     [TestMethod]
     public void SelectionTest() => SortTemplate(Sorting.Selection<int>);
+
+    [TestMethod]
+    public void MergeTest() => SortTemplate(Sorting.Merge<int>);
 }
