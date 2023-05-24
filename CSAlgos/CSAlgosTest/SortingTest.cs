@@ -12,10 +12,12 @@ public class SortingTests
         var itemsSorted = new List<int>(itemsCopy);
         itemsSorted.Sort();
         var result = func(itemsCopy);
-        Assert.AreEqual(itemsSorted, itemsSorted);
+        Assert.IsTrue(itemsSorted.SequenceEqual(result));
     }
 
     [TestMethod]
-    public void SelectionTest() => SortTemplate(Sorting.Selection<int>);
+    public void InsertionTest() => SortTemplate(Sorting.Insertion<int>);
 
+    [TestMethod]
+    public void SelectionTest() => SortTemplate(Sorting.Selection<int>);
 }

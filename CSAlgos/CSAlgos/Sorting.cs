@@ -10,6 +10,29 @@ public static class Sorting
     }
 
     /**
+     * Insertion Sort (Inplace)
+     *
+     * @param items a list to sort
+     * @return reference to list
+     */
+    public static IList<T> Insertion<T>(IList<T> items) where T : IComparable<T>
+    {
+        if (items.Count < 2)
+            return items;
+
+        for (int currentIndex = 1; currentIndex < items.Count; currentIndex++)
+            for (int insertionIndex = currentIndex; insertionIndex > 0; insertionIndex--)
+            {
+                var comparison = items[insertionIndex].CompareTo(items[insertionIndex - 1]);
+                if (comparison < 0)
+                    Swap(items, insertionIndex, insertionIndex - 1);
+                else
+                    break;
+            }
+        return items;
+    }
+
+    /**
      * Selection Sort (Inplace)
      *
      * @param items a list to sort
