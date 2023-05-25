@@ -23,4 +23,7 @@ public class SortingTests
 
     [TestMethod]
     public void MergeTest() => SortTemplate(Sorting.Merge<int>);
+    
+    [TestMethod]
+    public void QuickTest() => SortTemplate(Sorting.Quick<int>);
 }

@@ -100,4 +100,52 @@ public static class Sorting
         sortedItems.AddRange(rSortedItems);
         return sortedItems;
     }
+
+    /**
+     * Quick Sort (Inplace)
+     *
+     * @param items a list to sort
+     * @return reference to list
+     */
+    public static IList<T> Quick<T>(IList<T> items) where T : IComparable<T>
+    {
+        if (items.Count < 2)
+            return items;
+
+        void Partition(IList<T> items, int startIndex, int endIndex)
+        {
+            if ((endIndex - startIndex + 1) < 2)
+                return;
+            int pivot = endIndex;
+            int lIndex = startIndex;
+            int rIndex = pivot;
+            while (lIndex < rIndex)
+            {
+                var lComparison = items[lIndex].CompareTo(items[pivot]);
+                if (lComparison > 0){
+                    var rComparison = items[rIndex].CompareTo(items[pivot]);
+                    if (rComparison < 0) {
+                        Swap(items, lIndex, rIndex);
+                        Swap(items, rIndex, pivot);
+                        pivot = rIndex;
+                    }
+                    rIndex--;
+                }
+                else
+                    lIndex++;
+            }
+            var comparison = items[lIndex].CompareTo(items[pivot]);
+            if (comparison > 0){
+                Swap(items, pivot, lIndex);
+                pivot = lIndex;
+            }
+
+            Partition(items, startIndex, pivot - 1);
+            Partition(items, pivot + 1, endIndex);
+        }
+
+        Partition(items, 0, items.Count - 1);
+
+        return items;
+    }
 }

@@ -18,5 +18,5 @@ dotnet test CSAlgosTest/CSAlgosTest.csproj
 - [x] Insertion Sort
 - [x] Selection Sort
 - [x] Merge Sort
-- [ ] Quick Sort
+- [x] Quick Sort
 - [ ] Bubble Sort
