@@ -122,9 +122,11 @@ public static class Sorting
             while (lIndex < rIndex)
             {
                 var lComparison = items[lIndex].CompareTo(items[pivot]);
-                if (lComparison > 0){
+                if (lComparison > 0)
+                {
                     var rComparison = items[rIndex].CompareTo(items[pivot]);
-                    if (rComparison < 0) {
+                    if (rComparison < 0)
+                    {
                         Swap(items, lIndex, rIndex);
                         Swap(items, rIndex, pivot);
                         pivot = rIndex;
@@ -135,7 +137,8 @@ public static class Sorting
                     lIndex++;
             }
             var comparison = items[lIndex].CompareTo(items[pivot]);
-            if (comparison > 0){
+            if (comparison > 0)
+            {
                 Swap(items, pivot, lIndex);
                 pivot = lIndex;
             }
@@ -145,6 +148,35 @@ public static class Sorting
         }
 
         Partition(items, 0, items.Count - 1);
+
+        return items;
+    }
+
+    /**
+     * Bubble Sort (Inplace)
+     *
+     * @param items a list to sort
+     * @return reference to list
+     */
+    public static IList<T> Bubble<T>(IList<T> items) where T : IComparable<T>
+    {
+        if (items.Count < 2)
+            return items;
+
+        var isSorted = false;
+        while (!isSorted)
+        {
+            isSorted = true;
+            for (var i = 0; i < items.Count - 1; i++)
+            {
+                var comparison = items[i].CompareTo(items[i + 1]);
+                if (comparison > 0)
+                {
+                    Swap(items, i, i + 1);
+                    isSorted = false;
+                }
+            }
+        }
 
         return items;
     }

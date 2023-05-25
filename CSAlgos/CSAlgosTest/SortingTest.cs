@@ -26,4 +26,7 @@ public class SortingTests
     
     [TestMethod]
     public void QuickTest() => SortTemplate(Sorting.Quick<int>);
+
+    [TestMethod]
+    public void BubbleTest() => SortTemplate(Sorting.Bubble<int>);
 }
