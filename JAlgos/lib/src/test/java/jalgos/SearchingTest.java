@@ -32,4 +32,34 @@ class SearchingTest {
         SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Ternary(items, item);
         SearchTemplate(func);
     }
+
+    @Test void k1aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(1, items, item);
+        SearchTemplate(func);
+    }
+
+    @Test void k2aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(2, items, item);
+        SearchTemplate(func);
+    }
+
+    @Test void k3aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(3, items, item);
+        SearchTemplate(func);
+    }
+
+    @Test void k5aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(5, items, item);
+        SearchTemplate(func);
+    }
+
+    @Test void k8aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(8, items, item);
+        SearchTemplate(func);
+    }
+
+    @Test void k13aryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Kary(13, items, item);
+        SearchTemplate(func);
+    }
 }

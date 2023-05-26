@@ -83,4 +83,36 @@ public class Searching {
         return Optional.empty();
     }
 
+    /**
+     * Kary Search
+     * 
+     * @param k     the arity of the search
+     * @param <T>   the type of item
+     * @param items the list of items to be search
+     * @param item  the item to search for
+     * @return index of item if found, empty if not
+     */
+    public static <T extends Comparable<T>> Optional<Integer> Kary(int k, List<T> items, T item) {
+        var l = 0;
+        var r = items.size() - 1;
+
+        while (l <= r) {
+            var lConst = l;
+            var rConst = r;
+            for (int i = 1; i < k + 1; i++) {
+                var mid = lConst + i * (rConst - lConst) / (k + 1);
+                var comparison = item.compareTo(items.get(mid));
+                if (comparison == 0)
+                    return Optional.of(mid);
+                if (comparison < 0) {
+                    r = mid - 1;
+                    break;
+                } else
+                    l = mid + 1;
+            }
+        }
+
+        return Optional.empty();
+    }
+
 }
