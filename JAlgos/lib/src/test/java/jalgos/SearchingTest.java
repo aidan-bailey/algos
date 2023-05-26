@@ -22,4 +22,9 @@ class SearchingTest {
         SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Linear(items, item);
         SearchTemplate(func);
     }
+
+    @Test void binaryTest() {
+        SearchingFunction<List<Integer>, Integer, Optional<Integer>> func = (items, item) -> Searching.Binary(items, item);
+        SearchTemplate(func);
+    }
 }
