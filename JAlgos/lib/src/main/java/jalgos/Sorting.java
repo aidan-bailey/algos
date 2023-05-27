@@ -102,4 +102,58 @@ public class Sorting {
         return items;
     }
 
+    private static <T extends Comparable<T>> void QuickPartition(List<T> items, int startIndex, int endIndex) {
+        
+        if ((endIndex - startIndex + 1) < 2)
+            return;
+
+        int pivot = endIndex;
+        int fromLeft = startIndex;
+        int fromRight = pivot - 1;
+
+        while (fromLeft < fromRight)
+        {
+            var lComparison = items.get(fromLeft).compareTo(items.get(pivot));
+            if (lComparison > 0) {
+                var rComparison = items.get(fromRight).compareTo(items.get(pivot));
+                if (rComparison < 0)
+                {
+                    Swap(items, fromLeft, fromRight);
+                    Swap(items, fromRight, pivot);
+                    pivot = fromRight;    
+                }
+                fromRight--;
+            }
+            else
+                fromLeft++;
+        }
+
+        var comparison = items.get(fromLeft).compareTo(items.get(pivot));
+        if (comparison > 0)
+        {
+            Swap(items, pivot, fromLeft);
+            pivot = fromLeft;
+        }
+
+        QuickPartition(items, startIndex, pivot - 1);
+        QuickPartition(items, pivot + 1, endIndex);
+        
+    }
+
+    /**
+     * Quick Sort (Inplace)
+     * 
+     * @param <T>   the type of the items
+     * @param items the list of items to be sorted
+     * @return reference to the sorted list
+     */
+    public static <T extends Comparable<T>> List<T> Quick(List<T> items) {
+        if (items.size() < 2)
+            return items;
+
+        QuickPartition(items, 0, items.size() - 1);        
+
+        return items;
+    }
+
 }

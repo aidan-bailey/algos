@@ -29,6 +29,10 @@ class SortingTest {
     }
 
     @Test void mergeTest() {
-        SortTemplate((items) -> Sorting.Merge((LinkedList<Integer>) items));
+        SortTemplate((items) -> Sorting.Merge(items));
+    }
+
+    @Test void quickTest() {
+        SortTemplate((items) -> Sorting.Quick(items));
     }
 }
