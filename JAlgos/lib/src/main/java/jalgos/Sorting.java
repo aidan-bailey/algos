@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -153,6 +154,25 @@ public class Sorting {
 
         QuickPartition(items, 0, items.size() - 1);        
 
+        return items;
+    }
+
+    public static <T extends Comparable<T>> List<T> Bubble(List<T> items){
+        if (items.size() < 2)
+            return items;
+
+        var isSorted = false;
+        while (!isSorted){
+            isSorted = true;
+            for (int i = 0; i < items.size() - 1; i++) {
+                var comparison = items.get(i).compareTo(items.get(i + 1));
+                if (comparison > 0){
+                    Swap(items, i, i + 1);
+                    isSorted = false;
+                }
+            }
+        }
+            
         return items;
     }
 

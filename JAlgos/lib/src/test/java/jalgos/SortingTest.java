@@ -35,4 +35,8 @@ class SortingTest {
     @Test void quickTest() {
         SortTemplate((items) -> Sorting.Quick(items));
     }
+
+    @Test void bubbleTest() {
+        SortTemplate((items) -> Sorting.Bubble(items));
+    }    
 }
