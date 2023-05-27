@@ -104,7 +104,7 @@ public class Sorting {
     }
 
     private static <T extends Comparable<T>> void QuickPartition(List<T> items, int startIndex, int endIndex) {
-        
+
         if ((endIndex - startIndex + 1) < 2)
             return;
 
@@ -112,33 +112,28 @@ public class Sorting {
         int fromLeft = startIndex;
         int fromRight = pivot - 1;
 
-        while (fromLeft < fromRight)
-        {
+        while (fromLeft < fromRight) {
             var lComparison = items.get(fromLeft).compareTo(items.get(pivot));
             if (lComparison > 0) {
                 var rComparison = items.get(fromRight).compareTo(items.get(pivot));
-                if (rComparison < 0)
-                {
+                if (rComparison < 0) {
                     Swap(items, fromLeft, fromRight);
                     Swap(items, fromRight, pivot);
-                    pivot = fromRight;    
+                    pivot = fromRight;
                 }
                 fromRight--;
-            }
-            else
+            } else
                 fromLeft++;
         }
 
         var comparison = items.get(fromLeft).compareTo(items.get(pivot));
-        if (comparison > 0)
-        {
+        if (comparison > 0) {
             Swap(items, pivot, fromLeft);
             pivot = fromLeft;
         }
 
         QuickPartition(items, startIndex, pivot - 1);
         QuickPartition(items, pivot + 1, endIndex);
-        
     }
 
     /**
@@ -152,27 +147,27 @@ public class Sorting {
         if (items.size() < 2)
             return items;
 
-        QuickPartition(items, 0, items.size() - 1);        
+        QuickPartition(items, 0, items.size() - 1);
 
         return items;
     }
 
-    public static <T extends Comparable<T>> List<T> Bubble(List<T> items){
+    public static <T extends Comparable<T>> List<T> Bubble(List<T> items) {
         if (items.size() < 2)
             return items;
 
         var isSorted = false;
-        while (!isSorted){
+        while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < items.size() - 1; i++) {
                 var comparison = items.get(i).compareTo(items.get(i + 1));
-                if (comparison > 0){
+                if (comparison > 0) {
                     Swap(items, i, i + 1);
                     isSorted = false;
                 }
             }
         }
-            
+
         return items;
     }
 
