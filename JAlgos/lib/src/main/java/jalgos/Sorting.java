@@ -1,6 +1,12 @@
 package jalgos;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class Sorting {
 
@@ -53,6 +59,46 @@ public class Sorting {
             }
             Swap(items, insertionIndex, minIndex);
         }
+        return items;
+    }
+
+    /**
+     * Merge Sort (Inplace)
+     * 
+     * @param <T>   the type of the items
+     * @param items the list of items to be sorted
+     * @return reference to the sorted list
+     */
+    public static <T extends Comparable<T>> List<T> Merge(List<T> items) {
+        if (items.size() < 2)
+            return items;
+
+        var lSpliterator = items.spliterator();
+        var rSpliterator = lSpliterator.trySplit();
+        var lSorted = Merge(StreamSupport.stream(lSpliterator, false).collect(Collectors.toList()));
+        var rSorted = Merge(StreamSupport.stream(rSpliterator, false).collect(Collectors.toList()));
+
+        items.clear();
+
+        while (!lSorted.isEmpty() && !rSorted.isEmpty()) {
+            var comparison = lSorted.get(0).compareTo(rSorted.get(0));
+            if (comparison < 0) {
+                items.add(lSorted.get(0));
+                lSorted.remove(0);
+            } else if (comparison > 0) {
+                items.add(rSorted.get(0));
+                rSorted.remove(0);
+            } else {
+                items.add(lSorted.get(0));
+                items.add(rSorted.get(0));
+                lSorted.remove(0);
+                rSorted.remove(0);
+            }
+        }
+
+        items.addAll(lSorted);
+        items.addAll(rSorted);
+
         return items;
     }
 

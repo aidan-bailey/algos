@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 class SortingTest {
@@ -12,7 +13,7 @@ class SortingTest {
 
     public void SortTemplate(SortingFunction<List<Integer>, List<Integer>> func)
     {
-        var itemsCopy = new ArrayList<Integer>(items);
+        var itemsCopy = new LinkedList<Integer>(items);
         var itemsSorted = new ArrayList<Integer>(itemsCopy);
         itemsSorted.sort(null);
         var result = func.sort(itemsCopy);
@@ -25,5 +26,9 @@ class SortingTest {
 
     @Test void selectionTest() {
         SortTemplate((items) -> Sorting.Selection(items));
+    }
+
+    @Test void mergeTest() {
+        SortTemplate((items) -> Sorting.Merge((LinkedList<Integer>) items));
     }
 }

@@ -22,6 +22,6 @@ gradle test
 
 - [x] Insertion Sort
 - [x] Selection Sort
-- [ ] Merge Sort
+- [x] Merge Sort
 - [ ] Quick Sort
 - [ ] Bubble Sort
