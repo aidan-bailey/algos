@@ -32,4 +32,28 @@ public class Sorting {
         return items;
     }
 
+    /**
+     * Selection Sort (Inplace)
+     * 
+     * @param <T>   the type of the items
+     * @param items the list of items to be sorted
+     * @return reference to the sorted list
+     */
+    public static <T extends Comparable<T>> List<T> Selection(List<T> items) {
+        if (items.size() < 2)
+            return items;
+
+        for (int insertionIndex = 0; insertionIndex < items.size() - 1; insertionIndex++) {
+            var minIndex = insertionIndex;
+            for (int selectionIndex = minIndex + 1; selectionIndex < items.size(); selectionIndex++) {
+                var comparison = items.get(selectionIndex).compareTo(items.get(minIndex));
+                if (comparison < 0) {
+                    minIndex = selectionIndex;
+                }
+            }
+            Swap(items, insertionIndex, minIndex);
+        }
+        return items;
+    }
+
 }

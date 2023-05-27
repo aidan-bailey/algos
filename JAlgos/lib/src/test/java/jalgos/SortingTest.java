@@ -22,4 +22,8 @@ class SortingTest {
     @Test void insertionTest() {
         SortTemplate((items) -> Sorting.Insertion(items));
     }
+
+    @Test void selectionTest() {
+        SortTemplate((items) -> Sorting.Selection(items));
+    }
 }
