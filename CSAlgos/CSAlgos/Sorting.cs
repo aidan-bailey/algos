@@ -59,7 +59,7 @@ public static class Sorting
     }
 
     /**
-     * Merge Sort
+     * Merge Sort (Inplace)
      *
      * @param items a list to sort
      * @return sorted list
@@ -73,32 +73,36 @@ public static class Sorting
         var lSortedItems = Merge(new List<T>(items.Take(mid)));
         var rSortedItems = Merge(new List<T>(items.TakeLast(items.Count - mid)));
 
-        var sortedItems = new List<T>();
+        items.Clear();
 
         while (lSortedItems.Count > 0 && rSortedItems.Count > 0)
         {
             var comparison = lSortedItems.First().CompareTo(rSortedItems.First());
             if (comparison < 0)
             {
-                sortedItems.Add(lSortedItems.First());
+                items.Add(lSortedItems.First());
                 lSortedItems.RemoveAt(0);
             }
             else if (comparison > 0)
             {
-                sortedItems.Add(rSortedItems.First());
+                items.Add(rSortedItems.First());
                 rSortedItems.RemoveAt(0);
             }
             else
             {
-                sortedItems.Add(lSortedItems.First());
-                sortedItems.Add(rSortedItems.First());
+                items.Add(lSortedItems.First());
+                items.Add(rSortedItems.First());
                 lSortedItems.RemoveAt(0);
                 rSortedItems.RemoveAt(0);
             }
         }
-        sortedItems.AddRange(lSortedItems);
-        sortedItems.AddRange(rSortedItems);
-        return sortedItems;
+
+        foreach (var item in lSortedItems)
+            items.Add(item);
+        foreach (var item in rSortedItems)
+            items.Add(item);
+
+        return items;
     }
 
     /**
