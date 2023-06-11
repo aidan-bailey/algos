@@ -57,3 +57,4 @@ tests:
     dependencies:
     - halgos
     - QuickCheck
+    - random
