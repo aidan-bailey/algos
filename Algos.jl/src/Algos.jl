@@ -1,5 +1,6 @@
 module Algos
 
-# Write your package code here.
+include("Searching.jl")
+include("Sorting.jl")
 
 end
