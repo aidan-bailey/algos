@@ -3,7 +3,7 @@ A collection of common algorithms implemented in Julia.
 
 **Test**
 ```ssh
-dotnet test CSAlgosTest/CSAlgosTest.csproj
+julia --project=. test
 ```
 
 ### Searching
