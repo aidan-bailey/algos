@@ -1,3 +1,22 @@
-# Algos
+# Algos.jl
+A collection of common algorithms implemented in Julia.
 
-[![Build Status](https://github.com/aidan-bailey/Algos.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aidan-bailey/Algos.jl/actions/workflows/CI.yml?query=branch%3Amain)
+**Test**
+```ssh
+dotnet test CSAlgosTest/CSAlgosTest.csproj
+```
+
+### Searching
+
+- [ ] Linear Search
+- [ ] Binary Search
+- [ ] Ternary Search
+- [ ] Kary Search
+
+### Sorting
+
+- [ ] Insertion Sort
+- [ ] Selection Sort
+- [ ] Merge Sort
+- [ ] Quick Sort
+- [ ] Bubble Sort
