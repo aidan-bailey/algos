@@ -29,7 +29,7 @@ A collection of common algorithms implemented in a variety of languages.
 - [x] C# ([CSAlgos](https://github.com/aidanjbailey/algos/tree/master/CSAlgos))
 - [x] Go ([go-algos](https://github.com/aidanjbailey/algos/tree/master/go-algos))
 - [ ] Haskell ([halgos](https://github.com/aidanjbailey/algos/tree/master/halgos))
-- [ ] Julia
+- [x] Julia ([Algos.jl](https://github.com/aidanjbailey/algos/tree/master/Algos.jl))
 - [ ] Lisp
 - [ ] Lua
 - [x] Python ([py-algos](https://github.com/aidanjbailey/algos/tree/master/py-algos))
