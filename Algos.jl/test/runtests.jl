@@ -1,6 +1,6 @@
-using Algos
+using Algos.Searching
 using Test
 
-@testset "Algos.jl" begin
-    # Write your tests here.
+@testset "Searching" begin
+    @test linear([1, 2, 3], 1) == 1
 end
