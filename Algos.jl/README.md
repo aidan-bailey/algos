@@ -10,7 +10,7 @@ julia --project=. test
 
 - [x] Linear Search
 - [x] Binary Search
-- [ ] Ternary Search
+- [x] Ternary Search
 - [ ] Kary Search
 
 ### Sorting

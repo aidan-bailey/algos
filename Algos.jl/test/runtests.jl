@@ -26,4 +26,5 @@ end
 @testset verbose = true "Searching" begin
     test_basic_search(linear)
     test_basic_search(binary)
+    test_basic_search(ternary)
 end
