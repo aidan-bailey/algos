@@ -1,7 +1,7 @@
 /// Sort the given vector using the [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort) algorithm.
-pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+pub fn insertion<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
-        return;
+        return items;
     }
     for current_index in 1..items.len() {
         for insertion_index in (1..current_index + 1).rev() {
@@ -12,12 +12,13 @@ pub fn insertion<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
             }
         }
     }
+    return items;
 }
 
 /// Sort the given vector using the [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort) algorithm.
-pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+pub fn selection<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
-        return;
+        return items;
     }
     for insertion_index in 0..items.len() - 1 {
         let mut min_index = insertion_index;
@@ -28,6 +29,7 @@ pub fn selection<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
         }
         items.swap(insertion_index, min_index);
     }
+    return items;
 }
 
 /// Sort the given vector using the [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort) algorithm.
@@ -61,9 +63,9 @@ pub fn merge<T: std::cmp::PartialOrd + Copy>(items: Vec<T>) -> Vec<T> {
 }
 
 /// Sort the given vector using the [Quick Sort](https://en.wikipedia.org/wiki/Quick_sort) algorithm.
-pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+pub fn quick<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
-        return;
+        return items;
     }
     let mut partitions: Vec<(usize, usize)> = vec![(0, items.len())];
     while let Some(partition) = partitions.pop() {
@@ -96,12 +98,13 @@ pub fn quick<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
         let right_partition = (pivot_index + 1, right_partition_len);
         partitions.push(right_partition);
     }
+    return items;
 }
 
 /// Sort the given vector using the [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort) algorithm.
-pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
+pub fn bubble<T: std::cmp::PartialOrd>(mut items: Vec<T>) -> Vec<T> {
     if items.len() < 2 {
-        return;
+        return items;
     }
     let mut sorted = false;
     while !sorted {
@@ -113,4 +116,5 @@ pub fn bubble<T: std::cmp::PartialOrd>(items: &mut Vec<T>) {
             }
         }
     }
+    return items;
 }
