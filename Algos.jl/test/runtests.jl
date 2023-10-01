@@ -7,8 +7,8 @@ function search_test(search_func, items, item, result, description)
     end
 end
 
-function test_basic_search(search_func, function_name)
-    @testset verbose = true "$function_name search" begin
+function test_basic_search(search_func)
+    @testset verbose = true "$search_func search" begin
         search_test(search_func, [1, 2, 3, 4], 1, 1, "even list first item")
         search_test(search_func, [1, 2, 3, 4], 4, 4, "even list last item")
         search_test(search_func, [1, 2, 3, 4], 3, 3, "even list inner item")
@@ -24,5 +24,6 @@ function test_basic_search(search_func, function_name)
 end
 
 @testset verbose = true "Searching" begin
-    test_basic_search(linear, "linear")
+    test_basic_search(linear)
+    test_basic_search(binary)
 end
