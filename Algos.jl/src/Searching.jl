@@ -58,4 +58,28 @@ end
 
 export ternary
 
+function kary(k::Int64, items::Vector, item)::Union{Nothing,Integer}
+    l = 1
+    r = length(items)
+
+    while l <= r
+        delta::Integer = floor((r - l) / (k + 1))
+        lcur = copy(l)
+        for m in map(x -> lcur + x * delta, (1: k + 1))
+            if items[m] == item
+                return m
+            elseif items[m] < item
+                l = m + 1
+            else
+                r = m - 1
+                break
+            end
+        end
+    end
+
+    return nothing
+end
+
+export kary
+
 end
