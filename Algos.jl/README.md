@@ -15,8 +15,8 @@ julia --project=. test
 
 ### Sorting
 
-- [ ] Insertion Sort
-- [ ] Selection Sort
-- [ ] Merge Sort
+- [x] Insertion Sort
+- [x] Selection Sort
+- [x] Merge Sort
 - [ ] Quick Sort
 - [ ] Bubble Sort

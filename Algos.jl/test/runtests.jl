@@ -1,4 +1,5 @@
 using Algos.Searching
+using Algos.Sorting
 using Test
 
 function search_test(search_func, items, item, result, description)
@@ -33,4 +34,25 @@ end
     test_basic_search(((items, item, ) -> kary(5, items, item)), "5ary")
     test_basic_search(((items, item, ) -> kary(8, items, item)), "8ary")
     test_basic_search(((items, item, ) -> kary(13, items, item)), "13ary")
+end
+
+function sort_test(sort_func, items, description)
+    @testset "$description" begin
+        @test sort_func(items) == sort(items)
+    end
+end
+
+function test_basic_sort(sort_func, sort_name)
+    @testset verbose = true "$sort_name sort" begin
+        sort_test(sort_func, [], "n0")
+        sort_test(sort_func, [1], "n1")
+        sort_test(sort_func, [2, 1], "n2")
+        sort_test(sort_func, [3, 2, 1], "n3")
+    end
+end
+
+@testset verbose = true "Sorting" begin
+    test_basic_sort(insertion!, "insertion")
+    test_basic_sort(selection!, "selection")
+    test_basic_sort(Sorting.merge!, "merge")
 end
