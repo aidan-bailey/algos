@@ -19,7 +19,7 @@ function insertion!(items::Vector)::Vector
 
     for currindx in (2:length(items))
         for insertionindx in reverse(1:currindx-1)
-            if items[insertionindx + 1] < items[insertionindx]
+            if items[insertionindx+1] < items[insertionindx]
                 swap!(items, insertionindx, insertionindx + 1)
             else
                 break
@@ -59,7 +59,7 @@ function merge!(items::Vector)::Vector
 
     len::Integer = floor(length(items) / 2)
     itemsl = merge!(items[begin:len])
-    itemsr = merge!(items[len + 1:end])
+    itemsr = merge!(items[len+1:end])
 
     empty!(items)
 
@@ -95,9 +95,9 @@ function bubble_sort!(items::Vector)::Vector
     while true
         sorted = true
 
-        for i in 1:length(items) - 1
+        for i in 1:length(items)-1
             if items[i] > items[i+1]
-                swap!(items, i, i+1)
+                swap!(items, i, i + 1)
                 sorted = false
             end
         end
