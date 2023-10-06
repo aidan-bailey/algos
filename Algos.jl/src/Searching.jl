@@ -16,7 +16,7 @@ function binary(items::Vector, item)::Union{Nothing,Integer}
     r = length(items)
 
     while l <= r
-        m:: Integer = floor((l + r) / 2)
+        m::Integer = floor((l + r) / 2)
         if items[m] == item
             return m
         elseif item < items[m]
@@ -36,7 +36,7 @@ function ternary(items::Vector, item)::Union{Nothing,Integer}
     r = length(items)
 
     while l <= r
-        delta:: Integer = floor((r - l) / 3)
+        delta::Integer = floor((r - l) / 3)
         m1 = l + delta
         m2 = r - delta
         if items[m1] == item
@@ -65,7 +65,7 @@ function kary(k::Int64, items::Vector, item)::Union{Nothing,Integer}
     while l <= r
         delta::Integer = floor((r - l) / (k + 1))
         lcur = copy(l)
-        for m in map(x -> lcur + x * delta, (1: k + 1))
+        for m in map(x -> lcur + x * delta, (1:k+1))
             if items[m] == item
                 return m
             elseif items[m] < item
