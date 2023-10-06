@@ -1,14 +1,12 @@
-from typing import Any, List, Optional
-
-
-def linear(items: List[Any], item: Any) -> Optional[Any]:
+def linear(items: list, item) -> int | None:
     """Linear Search
 
     Parameters
     ----------
-    items: List[Any]
+    items: list
         Items to be searched through.
-    item: Any
+
+    item
         Item to be searched for.
 
     Returns
@@ -23,14 +21,14 @@ def linear(items: List[Any], item: Any) -> Optional[Any]:
     return None
 
 
-def binary(items: List[Any], item: Any) -> Optional[Any]:
+def binary(items: list, item) -> int | None:
     """Binary Search
 
     Parameters
     ----------
-    items: List[Any]
+    items: list
         Items to be searched through.
-    item: Any
+    item
         Item to be searched for.
 
     Returns
@@ -57,14 +55,14 @@ def binary(items: List[Any], item: Any) -> Optional[Any]:
     return None
 
 
-def ternary(items: List[Any], item: Any) -> Optional[Any]:
+def ternary(items: list, item) -> int | None:
     """Ternary Search
 
     Parameters
     ----------
-    items: List[Any]
+    items: list
         Items to be searched through.
-    item: Any
+    item
         Item to be searched for.
 
     Returns
@@ -96,16 +94,16 @@ def ternary(items: List[Any], item: Any) -> Optional[Any]:
 
     return None
 
-def kary(k: int, items: List[Any], item: Any) -> Optional[Any]:
+def kary(k: int, items: list, item) -> int | None:
     """Kary Search
 
     Parameters
     ----------
     k: int
         Arity of the search.
-    items: List[Any]
+    items: List
         Items to be searched through.
-    item: Any
+    item
         Item to be searched for.
 
     Returns
