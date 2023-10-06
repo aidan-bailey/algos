@@ -81,10 +81,35 @@ end
 
 export merge!
 
-function quicksort!(items::Vector)::Vector
+#function quicksort!(items::Vector)::Vector
+#    if length(items) < 2
+#        return items
+#    end
+#end
+
+function bubble_sort!(items::Vector)::Vector
     if length(items) < 2
         return items
     end
+
+    while true
+        sorted = true
+
+        for i in 1:length(items) - 1
+            if items[i] > items[i+1]
+                swap!(items, i, i+1)
+                sorted = false
+            end
+        end
+
+        if sorted
+            break
+        end
+    end
+
+    return items
 end
+
+export bubble_sort!
 
 end

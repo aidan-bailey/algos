@@ -55,4 +55,5 @@ end
     test_basic_sort(insertion!, "insertion")
     test_basic_sort(selection!, "selection")
     test_basic_sort(Sorting.merge!, "merge")
+    test_basic_sort(Sorting.bubble_sort!, "bubble")
 end
