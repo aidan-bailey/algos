@@ -120,7 +120,7 @@ end
 
 export quick!
 
-function bubble_sort!(items::Vector)::Vector
+function bubble!(items::Vector)::Vector
     if length(items) < 2
         return items
     end
@@ -143,6 +143,6 @@ function bubble_sort!(items::Vector)::Vector
     return items
 end
 
-export bubble_sort!
+export bubble!
 
 end
