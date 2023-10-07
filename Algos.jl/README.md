@@ -3,7 +3,7 @@ A collection of common algorithms implemented in Julia.
 
 **Test**
 ```ssh
-julia --project=. test
+julia --project=. test/runtests.jl
 ```
 
 ### Searching
