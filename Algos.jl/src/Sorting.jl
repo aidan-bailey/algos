@@ -81,11 +81,44 @@ end
 
 export merge!
 
-#function quicksort!(items::Vector)::Vector
-#    if length(items) < 2
-#        return items
-#    end
-#end
+function quick!(items::Vector)::Vector
+    if length(items) < 2
+        return items
+    end
+
+    function partition!(items::Vector, first::Integer, last::Integer)
+        if (last - first + 1) < 2
+            return
+        end
+
+        pivot = last
+        fromleftindex = first
+        fromrightindex = last
+        while fromleftindex < fromrightindex
+            if items[fromleftindex] > items[pivot]
+                if items[fromrightindex] < items[pivot]
+                    swap!(items, pivot, fromrightindex)
+                    swap!(items, pivot, fromleftindex)
+                    pivot = fromrightindex
+                end
+                fromrightindex -= 1
+            else
+                fromleftindex += 1
+            end
+        end
+        if items[fromleftindex] > items[pivot]
+            swap!(items, pivot, fromleftindex)
+            pivot = fromleftindex
+        end
+        partition!(items, first, pivot - 1)
+        partition!(items, pivot + 1, last)
+    end
+
+    partition!(items, 1, length(items))
+    return items
+end
+
+export quick!
 
 function bubble_sort!(items::Vector)::Vector
     if length(items) < 2
