@@ -1,22 +1,18 @@
-
+import Data.List (elemIndex, nub)
+import Data.Maybe (isNothing)
+import Searching (linear)
 import Test.QuickCheck
 
-import Searching (linear, binary)
-import Data.List (findIndex)
-
-
---searchTemplate :: Eq a => ([a] -> a -> Int) -> [Int] -> Bool
-linearTest :: [Int] -> Bool
-linearTest items
-  | null items = linear items 1 == Nothing
-  | otherwise = linear items (last items) == findIndex (\x -> x == last items) items
-
-binaryTest :: [Int] -> Bool
-binaryTest items
-  | null items = binary items 1 == Nothing
-  | Just (binary items (last items)) =
-  | otherwise = (items !! binary items (last items)) == (last items)
+searchTest :: ([Int] -> Int -> Maybe Int) -> [Int] -> Bool
+searchTest func [] = isNothing (func [] (1 :: Int))
+searchTest func items =
+  func itemsunique lastitem == elemIndex lastitem itemsunique
+  where
+    itemsunique = nub items
+    lastitem = last itemsunique
 
 main :: IO ()
 main = do
-  quickCheck binaryTest
+  quickCheck linearTest
+  where
+    linearTest = searchTest linear
