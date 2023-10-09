@@ -16,7 +16,7 @@ stack test
 ### Searching
 
 - [x] Linear Search
-- [ ] Binary Search
+- [x] Binary Search
 - [ ] Ternary Search
 - [ ] Kary Search
 
