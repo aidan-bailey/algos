@@ -1,6 +1,6 @@
 import Data.List (elemIndex, nub, sort)
 import Data.Maybe (isNothing)
-import Searching (linear, binary)
+import Searching (linear, binary, ternary)
 import Test.QuickCheck
 
 searchTest :: ([Int] -> Int -> Maybe Int) -> [Int] -> Bool
@@ -17,6 +17,8 @@ main :: IO ()
 main = do
   quickCheck linearTest
   quickCheck binaryTest
+  quickCheck ternaryTest
   where
     linearTest = searchTest linear
     binaryTest = searchTest binary
+    ternaryTest = searchTest ternary
