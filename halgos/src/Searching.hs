@@ -41,5 +41,6 @@ ternaryAux items item l r
     item1 = items !! mid1
     item2 = items !! mid2
 
+-- | The `ternary` method performs ternary search on a list for an item, returning an index if found, or `Nothing` if not.
 ternary :: (Ord a) => [a] -> a -> Maybe Int
 ternary items item = ternaryAux items item 0 (length items - 1)
