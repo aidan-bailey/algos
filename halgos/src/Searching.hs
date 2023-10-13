@@ -44,3 +44,14 @@ ternaryAux items item l r
 -- | The `ternary` method performs ternary search on a list for an item, returning an index if found, or `Nothing` if not.
 ternary :: (Ord a) => [a] -> a -> Maybe Int
 ternary items item = ternaryAux items item 0 (length items - 1)
+
+karyAux :: (Ord a) => Int -> [a] -> a -> Int -> Int -> Maybe Int
+karyAux _ [] _ _ _ = Nothing
+karyAux items k item l r
+  | l > r = Nothing
+  where
+    delta = div (r - l) 3
+
+-- | The `ternary` method performs ternary search on a list for an item, returning an index if found, or `Nothing` if not.
+kary :: (Ord a) => Int -> [a] -> a -> Maybe Int
+kary k items item = karyAux k items item 0 (length items - 1)

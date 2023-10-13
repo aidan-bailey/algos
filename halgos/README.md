@@ -24,6 +24,6 @@ stack test
 
 - [ ] Insertion Sort
 - [ ] Selection Sort
-- [ ] Merge Sort
+- [x] Merge Sort
 - [ ] Quick Sort
 - [ ] Bubble Sort

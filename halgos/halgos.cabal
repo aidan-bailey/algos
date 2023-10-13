@@ -25,6 +25,7 @@ source-repository head
 library
   exposed-modules:
       Searching
+      Sorting
   other-modules:
       Paths_halgos
   hs-source-dirs:

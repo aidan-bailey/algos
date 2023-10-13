@@ -1,6 +1,7 @@
 import Data.List (elemIndex, nub, sort)
 import Data.Maybe (isNothing)
 import Searching (linear, binary, ternary)
+import Sorting (merge)
 import Test.QuickCheck
 
 searchTest :: ([Int] -> Int -> Maybe Int) -> [Int] -> Bool
@@ -13,12 +14,18 @@ searchTest func items =
     lastitem = last itemsunique
     firstitem = head itemsunique
 
+sortTest :: ([Int] -> [Int]) -> [Int] -> Bool
+sortTest func items = func items == sort items
+
+
 main :: IO ()
 main = do
   quickCheck linearTest
   quickCheck binaryTest
   quickCheck ternaryTest
+  quickCheck mergeTest
   where
     linearTest = searchTest linear
     binaryTest = searchTest binary
     ternaryTest = searchTest ternary
+    mergeTest = sortTest merge
