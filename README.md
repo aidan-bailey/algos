@@ -25,16 +25,16 @@ A collection of common algorithms implemented in a variety of languages.
 ## Languages
 
 - [ ] C
-- [x] C++ ([cpp-algos](https://github.com/aidanjbailey/algos/tree/master/cpp-algos))
-- [x] C# ([CSAlgos](https://github.com/aidanjbailey/algos/tree/master/CSAlgos))
-- [ ] Go ([go-algos](https://github.com/aidanjbailey/algos/tree/master/go-algos))
-- [ ] Haskell ([halgos](https://github.com/aidanjbailey/algos/tree/master/halgos))
-- [x] Julia ([Algos.jl](https://github.com/aidanjbailey/algos/tree/master/Algos.jl))
+- [x] C++ ([cpp-algos](https://github.com/aidan-bailey/algos/tree/master/cpp-algos))
+- [x] C# ([CSAlgos](https://github.com/aidan-bailey/algos/tree/master/CSAlgos))
+- [ ] Go ([go-algos](https://github.com/aidan-bailey/algos/tree/master/go-algos))
+- [ ] Haskell ([halgos](https://github.com/aidan-bailey/algos/tree/master/halgos))
+- [x] Julia ([Algos.jl](https://github.com/aidan-bailey/algos/tree/master/Algos.jl))
 - [ ] Lisp
 - [ ] Lua
-- [x] Python ([py-algos](https://github.com/aidanjbailey/algos/tree/master/py-algos))
+- [x] Python ([py-algos](https://github.com/aidan-bailey/algos/tree/master/py-algos))
 - [ ] Pseudo
-- [x] Rust ([algos-rs](https://github.com/aidanjbailey/algos/tree/master/algos-rs))
+- [x] Rust ([algos-rs](https://github.com/aidan-bailey/algos/tree/master/algos-rs))
 - [ ] Scala
-- [ ] Kotlin
-- [x] Java ([JAlgos](https://github.com/aidanjbailey/algos/tree/master/JAlgos))
+- [ ] Kotlin ([KTAlgos](https://github.com/aidan-bailey/algos/tree/master/KTAlgos))
+- [x] Java ([JAlgos](https://github.com/aidan-bailey/algos/tree/master/JAlgos))
